@@ -10,8 +10,12 @@ CYAN='\033[1;36m'
 WHITE='\033[1;37m'
 NC='\033[0m' # Sem cor
 
-# Ícone Nerd Font (Certifique-se de ter uma fonte Nerd Font instalada!)
-ICON=""
+# Ícone Nerd Font (Verificação opcional)
+if fc-list | grep -qi "Nerd Font"; then
+    ICON="" # Ícone na Nerd Font
+else
+    ICON="*" # Fallback caso a Nerd Font não esteja instalada
+fi
 
 # Logo ASCII 
 LOGO="${CYAN}
