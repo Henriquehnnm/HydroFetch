@@ -12,6 +12,13 @@
 *   💙 **Alternativa moderna ao Neofetch**: Simples, funcional e bonito.
 *   🚀 **Expansível**: Suporte para mais distros chegando nas próximas versões.
 
+🔧 Instalaação
+
+* Fassa o Download do fetch correspondente
+* Permita a execução como programa
+* Rode a script no terminal
+* Crie uma alias no seu shell (opcional)
+
 🏗 Roadmap
 ----------
 
