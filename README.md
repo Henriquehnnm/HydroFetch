@@ -29,7 +29,7 @@ chmod +x neonfetch.sh
 </ul>
 
 <h2>📸 Preview</h2>
-![Captura de tela](Screenshot/screenshot.png)
+![Screenshot](Screenshot/screenshot.png)
 
 <h2>💡 Contribuição</h2>
 <p>Sinta-se à vontade para contribuir com melhorias ou novas funcionalidades!</p>
