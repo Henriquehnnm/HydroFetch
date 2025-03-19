@@ -55,4 +55,4 @@ printf "${MAGENTA}│${WHITE} $ICON_RAM ${MAGENTA}│${WHITE} RAM:    %-22s ${MA
 echo -e "${MAGENTA}└─────────────────────────────────────┘${NC}"  
 
 # Exibir Nerd Icons coloridos 🎨
-echo -e " ${RED}${NC} ${GREEN}${NC} ${YELLOW}${NC} ${BLUE}${NC} ${MAGENTA}${NC} ${CYAN}${NC} ${WHITE}${NC}"
+echo -e " ${RED}${NC}  ${GREEN}${NC}  ${YELLOW}${NC}  ${BLUE}${NC}  ${MAGENTA}${NC}  ${CYAN}${NC}  ${WHITE}${NC}"
