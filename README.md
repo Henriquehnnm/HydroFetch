@@ -1,38 +1,42 @@
-🚀 Neonfetch
-==============
+<pre>
+███╗   ██╗███████╗ ██████╗ ███╗   ██╗███████╗███████╗████████╗ ██████╗██╗  ██╗
+████╗  ██║██╔════╝██╔═══██╗████╗  ██║██╔════╝██╔════╝╚══██╔══╝██╔════╝██║  ██║
+██╔██╗ ██║█████╗  ██║   ██║██╔██╗ ██║█████╗  █████╗     ██║   ██║     ███████║
+██║╚██╗██║██╔══╝  ██║   ██║██║╚██╗██║██╔══╝  ██╔══╝     ██║   ██║     ██╔══██║
+██║ ╚████║███████╗╚██████╔╝██║ ╚████║██║     ███████╗   ██║   ╚██████╗██║  ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝     ╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝
+</pre>
 
 **Neonfetch** é uma alternativa **minimalista e eficiente** ao antigo Neofetch. Ele exibe informações essenciais do sistema de forma **clean** e **estilosa**.
 
-🎨 Características
-------------------
+## 🎨 Características
 
-*   🖼 **Design minimalista**: Sem excesso de informações, só o essencial!
-*   ⚡ **Rápido e leve**: Executa instantaneamente, sem consumo desnecessário.
-*   🎭 **Estiloso**: Exibe informações do sistema com um toque neon!
-*   💙 **Alternativa moderna ao Neofetch**: Simples, funcional e bonito.
-*   🚀 **Expansível**: Suporte para mais distros chegando nas próximas versões.
+- 🖼 **Design minimalista**: Sem excesso de informações, só o essencial!
+- ⚡ **Rápido e leve**: Executa instantaneamente, sem consumo desnecessário.
+- 🎭 **Estiloso**: Exibe informações do sistema com um toque neon!
+- 💙 **Alternativa moderna ao Neofetch**: Simples, funcional e bonito.
+- 🚀 **Expansível**: Suporte para mais distros chegando nas próximas versões.
 
-🔧 Instalaação
+## 🔧 Instalação
 
-* Fassa o Download do fetch correspondente
-* Permita a execução como programa
-* Rode a script no terminal
-* Crie uma alias no seu shell (opcional)
+1. Faça o download do fetch correspondente.
+2. Permita a execução como programa.
+3. Rode o script no terminal.
+4. Crie um alias no seu shell (opcional).
 
-* **Requisitos:** E nessesário ter uma nerd font instalada para melhor esperiencia
+### **Requisitos**
+- É necessário ter uma **Nerd Font** instalada para melhor experiência.
 
-🏗 Roadmap
-----------
+## 🏗 Roadmap
 
-*   ✔ **Versão Alpha** – Suporte inicial para algumas distribuições **Debian-based**.
-*   🚀 **Versão Beta** – Suporte para **Arch-based** e **Fedora-based** (em breve).
+- ✔ **Versão Alpha** – Suporte inicial para algumas distribuições **Debian-based**.
+- 🚀 **Versão Beta** – Suporte para **Arch-based** e **Fedora-based** (em breve).
 
-📸 Preview
-----------
+## 📸 Preview
 
 ![Screenshot](Screenshot/screenshot.png)
 
-💡 Contribuição
----------------
+## 💡 Contribuição
 
 Sinta-se à vontade para contribuir com melhorias ou novas funcionalidades!
+
