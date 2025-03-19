@@ -1,4 +1,4 @@
-🚀💙 Neonfetch
+🚀 Neonfetch
 ==============
 
 **Neonfetch** é uma alternativa **minimalista e eficiente** ao antigo Neofetch. Ele exibe informações essenciais do sistema de forma **clean** e **estilosa**.
