@@ -10,47 +10,44 @@ CYAN='\033[1;36m'
 WHITE='\033[1;37m'
 NC='\033[0m' # Sem cor
 
-# Ícone Nerd Font 🎨 (Verificação opcional)
-if fc-list | grep -qi "Nerd Font"; then
-    ICON="" # Ícone do Zorin OS na Nerd Font (ou um similar)
-else
-    ICON="*" # Fallback caso a Nerd Font não esteja instalada
-fi
+# Ícones Nerd Font 🎨 (Certifique-se de ter uma fonte Nerd Font instalada!)
+ICON_USER=" "
+ICON_HOST="󰖟 "
+ICON_OS="󰌽 "
+ICON_KERNEL=" "
+ICON_DE="󰍹 "
+ICON_RAM=" "
 
-# Logo ASCII do Zorin OS 🔵
+# Logo ASCII 💎
 LOGO="${CYAN}
-███████╗ ██████╗ ██████╗ ██╗███╗   ██╗     ██████╗ ███████╗
-╚══███╔╝██╔═══██╗██╔══██╗██║████╗  ██║    ██╔═══██╗██╔════╝
-  ███╔╝ ██║   ██║██████╔╝██║██╔██╗ ██║    ██║   ██║███████╗
- ███╔╝  ██║   ██║██╔══██╗██║██║╚██╗██║    ██║   ██║╚════██║
-███████╗╚██████╔╝██║  ██║██║██║ ╚████║    ╚██████╔╝███████║
-╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚══════╝
+ ███████╗ ██████╗ ██████╗ ██╗███╗   ██╗     ██████╗ ███████╗
+ ╚══███╔╝██╔═══██╗██╔══██╗██║████╗  ██║    ██╔═══██╗██╔════╝
+   ███╔╝ ██║   ██║██████╔╝██║██╔██╗ ██║    ██║   ██║███████╗
+  ███╔╝  ██║   ██║██╔══██╗██║██║╚██╗██║    ██║   ██║╚════██║
+ ███████╗╚██████╔╝██║  ██║██║██║ ╚████║    ╚██████╔╝███████║
+ ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝     ╚═════╝ ╚══════╝  
 ${NC}"
 
 # Informações do sistema 📊
 USER="$(whoami)"
 HOST="$(hostname)"
-OS="$(lsb_release -ds 2>/dev/null || grep '^PRETTY_NAME=' /etc/os-release | cut -d= -f2 | tr -d '\"')"
+OS="$(lsb_release -ds)"
 KERNEL="$(uname -r)"
-SHELL="$(basename "$SHELL")"
-DE="${XDG_CURRENT_DESKTOP:-Desconhecido}"
-RAM_USED=$(free -h --si | awk '/^Mem:/ {print $3}')
-RAM_TOTAL=$(free -h --si | awk '/^Mem:/ {print $2}')
-RAM="${RAM_USED} / ${RAM_TOTAL}"
+DE="${XDG_CURRENT_DESKTOP:-N/A}"
+RAM="$(free -h --si | awk '/^Mem:/ {print $3 "/" $2}')"
 
 # Exibir o logo
 echo -e "$LOGO"
 
 # Exibir informações dentro de uma única caixa 📦
-echo -e "${MAGENTA}┌─────────────────────────────────┐${NC}"
-printf "${MAGENTA}│${WHITE} User:    %-22s ${MAGENTA}│${NC}\n" "$USER"
-printf "${MAGENTA}│${WHITE} Host:    %-22s ${MAGENTA}│${NC}\n" "$HOST"
-printf "${MAGENTA}│${WHITE} OS:      %-22s ${MAGENTA}│${NC}\n" "$OS"
-printf "${MAGENTA}│${WHITE} Kernel:  %-22s ${MAGENTA}│${NC}\n" "$KERNEL"
-printf "${MAGENTA}│${WHITE} Shell:   %-22s ${MAGENTA}│${NC}\n" "$SHELL"
-printf "${MAGENTA}│${WHITE} DE:      %-22s ${MAGENTA}│${NC}\n" "$DE"
-printf "${MAGENTA}│${WHITE} RAM:     %-22s ${MAGENTA}│${NC}\n" "$RAM"
-echo -e "${MAGENTA}└─────────────────────────────────┘${NC}"
+echo -e "${MAGENTA}┌─────────────────────────────────────┐${NC}"
+printf "${MAGENTA}│${WHITE} $ICON_USER ${MAGENTA}│${WHITE} User:   %-22s ${MAGENTA}│${NC}\n" "$USER"
+printf "${MAGENTA}│${WHITE} $ICON_HOST ${MAGENTA}│${WHITE} Host:   %-22s ${MAGENTA}│${NC}\n" "$HOST"
+printf "${MAGENTA}│${WHITE} $ICON_OS ${MAGENTA}│${WHITE} OS:     %-22s ${MAGENTA}│${NC}\n" "$OS"
+printf "${MAGENTA}│${WHITE} $ICON_KERNEL ${MAGENTA}│${WHITE} Kernel: %-22s ${MAGENTA}│${NC}\n" "$KERNEL"
+printf "${MAGENTA}│${WHITE} $ICON_DE ${MAGENTA}│${WHITE} DE:     %-22s ${MAGENTA}│${NC}\n" "$DE"
+printf "${MAGENTA}│${WHITE} $ICON_RAM ${MAGENTA}│${WHITE} RAM:    %-22s ${MAGENTA}│${NC}\n" "$RAM"
+echo -e "${MAGENTA}└─────────────────────────────────────┘${NC}"
 
 # Exibir Nerd Icons coloridos 🎨
-echo -e " ${RED}$ICON${NC} ${YELLOW}$ICON${NC} ${BLUE}$ICON${NC} ${MAGENTA}$ICON${NC} ${CYAN}$ICON${NC} ${WHITE}$ICON${NC}"
+echo -e " ${RED}${NC} ${GREEN}${NC} ${YELLOW}${NC} ${BLUE}${NC} ${MAGENTA}${NC} ${CYAN}${NC} ${WHITE}${NC}"
