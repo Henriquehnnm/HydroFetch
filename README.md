@@ -1,7 +1,7 @@
 🚀💙 Neonfetch
 ==============
 
-**Neonfetch** é uma alternativa **minimalista e eficiente** ao antigo Neofetch. Ele exibe informações essenciais do sistema de forma **clean** e **estilosa**, seguindo um padrão de **logo ciano** e **caixa de informações em magenta**.
+**Neonfetch** é uma alternativa **minimalista e eficiente** ao antigo Neofetch. Ele exibe informações essenciais do sistema de forma **clean** e **estilosa**.
 
 🎨 Características
 ------------------
@@ -11,21 +11,6 @@
 *   🎭 **Estiloso**: Exibe informações do sistema com um toque neon!
 *   💙 **Alternativa moderna ao Neofetch**: Simples, funcional e bonito.
 *   🚀 **Expansível**: Suporte para mais distros chegando nas próximas versões.
-
-🔧 Instalação
--------------
-
-Clone o repositório e torne o script executável:
-
-    git clone https://github.com/seu-usuario/neonfetch.git
-    cd neonfetch
-    chmod +x neonfetch.sh
-    
-
-Agora é só rodar!
-
-    ./neonfetch.sh
-    
 
 🏗 Roadmap
 ----------
