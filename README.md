@@ -1,35 +1,44 @@
-<h1>🚀💙 Neonfetch</h1>
+🚀💙 Neonfetch
+==============
 
-<p><strong>Neonfetch</strong> é uma alternativa <strong>minimalista e eficiente</strong> ao antigo Neofetch. Ele exibe informações essenciais do sistema de forma <strong>clean</strong> e <strong>estilosa</strong>, seguindo um padrão de <strong>logo ciano</strong> e <strong>caixa de informações em magenta</strong>.</p>
+**Neonfetch** é uma alternativa **minimalista e eficiente** ao antigo Neofetch. Ele exibe informações essenciais do sistema de forma **clean** e **estilosa**, seguindo um padrão de **logo ciano** e **caixa de informações em magenta**.
 
-<h2>🎨 Características</h2>
-<ul>
-  <li>🖼 <strong>Design minimalista</strong>: Sem excesso de informações, só o essencial!</li>
-  <li>⚡ <strong>Rápido e leve</strong>: Executa instantaneamente, sem consumo desnecessário.</li>
-  <li>🎭 <strong>Estiloso</strong>: Exibe informações do sistema com um toque neon!</li>
-  <li>💙 <strong>Alternativa moderna ao Neofetch</strong>: Simples, funcional e bonito.</li>
-  <li>🚀 <strong>Expansível</strong>: Suporte para mais distros chegando nas próximas versões.</li>
-</ul>
+🎨 Características
+------------------
 
-<h2>🔧 Instalação</h2>
-<p>Clone o repositório e torne o script executável:</p>
-<pre><code>git clone https://github.com/seu-usuario/neonfetch.git
-cd neonfetch
-chmod +x neonfetch.sh
-</code></pre>
+*   🖼 **Design minimalista**: Sem excesso de informações, só o essencial!
+*   ⚡ **Rápido e leve**: Executa instantaneamente, sem consumo desnecessário.
+*   🎭 **Estiloso**: Exibe informações do sistema com um toque neon!
+*   💙 **Alternativa moderna ao Neofetch**: Simples, funcional e bonito.
+*   🚀 **Expansível**: Suporte para mais distros chegando nas próximas versões.
 
-<p>Agora é só rodar!</p>
-<pre><code>./neonfetch.sh
-</code></pre>
+🔧 Instalação
+-------------
 
-<h2>🏗 Roadmap</h2>
-<ul>
-  <li>✔ <strong>Versão Alpha</strong> – Suporte inicial para algumas distribuições.</li>
-  <li>🚀 <strong>Versão Beta</strong> – Suporte para <strong>Arch-based</strong> e <strong>Fedora-based</strong> (em breve).</li>
-</ul>
+Clone o repositório e torne o script executável:
 
-<h2>📸 Preview</h2>
+    git clone https://github.com/seu-usuario/neonfetch.git
+    cd neonfetch
+    chmod +x neonfetch.sh
+    
+
+Agora é só rodar!
+
+    ./neonfetch.sh
+    
+
+🏗 Roadmap
+----------
+
+*   ✔ **Versão Alpha** – Suporte inicial para algumas distribuições.
+*   🚀 **Versão Beta** – Suporte para **Arch-based** e **Fedora-based** (em breve).
+
+📸 Preview
+----------
+
 ![Screenshot](Screenshot/screenshot.png)
 
-<h2>💡 Contribuição</h2>
-<p>Sinta-se à vontade para contribuir com melhorias ou novas funcionalidades!</p>
+💡 Contribuição
+---------------
+
+Sinta-se à vontade para contribuir com melhorias ou novas funcionalidades!
