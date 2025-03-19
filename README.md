@@ -19,6 +19,8 @@
 * Rode a script no terminal
 * Crie uma alias no seu shell (opcional)
 
+* **Requisitos:** E nessesário ter uma nerd font instalada para melhor esperiencia
+
 🏗 Roadmap
 ----------
 
