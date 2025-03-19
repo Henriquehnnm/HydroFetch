@@ -33,7 +33,7 @@
 
 ## 📸 Preview
 
-![Screenshot](screenshot.png)
+![Screenshot](Screenshot.png)
 
 ## 💡 Contribuição
 
