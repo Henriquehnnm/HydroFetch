@@ -15,7 +15,7 @@
 🏗 Roadmap
 ----------
 
-*   ✔ **Versão Alpha** – Suporte inicial para algumas distribuições.
+*   ✔ **Versão Alpha** – Suporte inicial para algumas distribuições **Debian-based**.
 *   🚀 **Versão Beta** – Suporte para **Arch-based** e **Fedora-based** (em breve).
 
 📸 Preview
