@@ -20,18 +20,18 @@ ICON_RAM=" "
 
 # Logo ASCII 💎
 LOGO="${CYAN}
- ██╗  ██╗██████╗ ███████╗    ███╗   ██╗███████╗ ██████╗ ███╗   ██╗  
- ██║ ██╔╝██╔══██╗██╔════╝    ████╗  ██║██╔════╝██╔═══██╗████╗  ██║  
- █████╔╝ ██║  ██║█████╗      ██╔██╗ ██║█████╗  ██║   ██║██╔██╗ ██║  
- ██╔═██╗ ██║  ██║██╔══╝      ██║╚██╗██║██╔══╝  ██║   ██║██║╚██╗██║  
- ██║  ██╗██████╔╝███████╗    ██║ ╚████║███████╗╚██████╔╝██║ ╚████║  
- ╚═╝  ╚═╝╚═════╝ ╚══════╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝  
+ ██╗  ██╗██████╗ ███████╗    ███╗   ██╗███████╗ ██████╗ ███╗   ██╗
+ ██║ ██╔╝██╔══██╗██╔════╝    ████╗  ██║██╔════╝██╔═══██╗████╗  ██║
+ █████╔╝ ██║  ██║█████╗      ██╔██╗ ██║█████╗  ██║   ██║██╔██╗ ██║
+ ██╔═██╗ ██║  ██║██╔══╝      ██║╚██╗██║██╔══╝  ██║   ██║██║╚██╗██║
+ ██║  ██╗██████╔╝███████╗    ██║ ╚████║███████╗╚██████╔╝██║ ╚████║
+ ╚═╝  ╚═╝╚═════╝ ╚══════╝    ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝
 ${NC}"
 
 # Informações do sistema 📊
 USER="$(whoami)"
 HOST="$(hostname)"
-OS="$(lsb_release -ds)"
+OS=$(grep -E '^NAME=' /etc/os-release | cut -d'=' -f2 | tr -d '"')
 KERNEL="$(uname -r)"
 DE="${XDG_CURRENT_DESKTOP:-N/A}"
 RAM="$(free -h --si | awk '/^Mem:/ {print $3 "/" $2}')"
@@ -39,20 +39,20 @@ RAM="$(free -h --si | awk '/^Mem:/ {print $3 "/" $2}')"
 # Exibir o logo
 echo -e "$LOGO"
 
-# Exibir informações dentro de uma única caixa 📦  
-echo -e "${MAGENTA}┌─────────────────────────────────────┐${NC}"  
-printf "${MAGENTA}│${WHITE} $ICON_USER ${MAGENTA}│${WHITE} User:   %-22s ${MAGENTA}│${NC}\n" "$USER"  
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${WHITE}"  
-printf "${MAGENTA}│${WHITE} $ICON_HOST ${MAGENTA}│${WHITE} Host:   %-22s ${MAGENTA}│${NC}\n" "$HOST"  
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${WHITE}"  
-printf "${MAGENTA}│${WHITE} $ICON_OS ${MAGENTA}│${WHITE} OS:     %-22s ${MAGENTA}│${NC}\n" "$OS"  
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${WHITE}"  
-printf "${MAGENTA}│${WHITE} $ICON_KERNEL ${MAGENTA}│${WHITE} Kernel: %-22s ${MAGENTA}│${NC}\n" "$KERNEL"  
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${WHITE}"  
-printf "${MAGENTA}│${WHITE} $ICON_DE ${MAGENTA}│${WHITE} DE:     %-22s ${MAGENTA}│${NC}\n" "$DE"  
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${WHITE}"  
-printf "${MAGENTA}│${WHITE} $ICON_RAM ${MAGENTA}│${WHITE} RAM:    %-22s ${MAGENTA}│${NC}\n" "$RAM"  
-echo -e "${MAGENTA}└─────────────────────────────────────┘${NC}"  
+# Exibir informações dentro de uma única caixa 📦
+echo -e "${MAGENTA}┌─────────────────────────────────────┐${NC}"
+printf "${MAGENTA}│${WHITE} $ICON_USER ${MAGENTA}│${WHITE} User:   %-22s ${MAGENTA}│${NC}\n" "$USER"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${WHITE}"
+printf "${MAGENTA}│${WHITE} $ICON_HOST ${MAGENTA}│${WHITE} Host:   %-22s ${MAGENTA}│${NC}\n" "$HOST"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${WHITE}"
+printf "${MAGENTA}│${WHITE} $ICON_OS ${MAGENTA}│${WHITE} OS:     %-22s ${MAGENTA}│${NC}\n" "$OS"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${WHITE}"
+printf "${MAGENTA}│${WHITE} $ICON_KERNEL ${MAGENTA}│${WHITE} Kernel: %-22s ${MAGENTA}│${NC}\n" "$KERNEL"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${WHITE}"
+printf "${MAGENTA}│${WHITE} $ICON_DE ${MAGENTA}│${WHITE} DE:     %-22s ${MAGENTA}│${NC}\n" "$DE"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${WHITE}"
+printf "${MAGENTA}│${WHITE} $ICON_RAM ${MAGENTA}│${WHITE} RAM:    %-22s ${MAGENTA}│${NC}\n" "$RAM"
+echo -e "${MAGENTA}└─────────────────────────────────────┘${NC}"
 
 # Exibir Nerd Icons coloridos 🎨
 echo -e " ${RED}${NC}  ${GREEN}${NC}  ${YELLOW}${NC}  ${BLUE}${NC}  ${MAGENTA}${NC}  ${CYAN}${NC}  ${WHITE}${NC}"
