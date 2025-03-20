@@ -31,7 +31,7 @@ ${NC}"
 # Informações do sistema 📊
 USER="$(whoami)"
 HOST="$(hostname)"
-OS="$(lsb_release -ds)"
+OS=$(grep -E '^NAME=' /etc/os-release | cut -d'=' -f2 | tr -d '"')
 KERNEL="$(uname -r)"
 DE="${XDG_CURRENT_DESKTOP:-N/A}"
 RAM="$(free -h --si | awk '/^Mem:/ {print $3 "/" $2}')"
