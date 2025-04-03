@@ -28,8 +28,7 @@
 
 ## 🏗 Roadmap
 
-- ✔ **Versão Alpha** – Suporte inicial para algumas distribuições **Debian-based**, **Arch-based** e **Fedora-based**.
-- 🚀 **Versão Beta** – Suporte para **Alpine-based** e **Gentoo-based** (em breve).
+- 🚀 **Versão Beta** – Suporte globa a qualquer distribuição base Debian Fedora Arch ou Alpine.
 
 ## 📸 Preview
 
