@@ -28,7 +28,7 @@
 
 ## 🏗 Roadmap
 
-- 🚀 **Versão Beta** – Suporte globa a qualquer distribuição base Debian Fedora Arch ou Alpine.
+- 🚀 **Versão Beta** – Suporte global a qualquer distribuição base Debian Fedora Arch ou Alpine.
 
 ## 📸 Preview
 
