@@ -55,7 +55,7 @@ HOST="$(hostname)"
 OS="$OS_NAME"
 KERNEL="$(uname -r)"
 DE="${XDG_CURRENT_DESKTOP:-N/A}"
-RAM="$(free -h --si | awk '/^Mem:/ {print $3 "/" $2}')"
+RAM=$(free -h --si | awk 'NR==2 {print $3 " / " $2}')
 
 # Exibir o logo
 echo -e "$CYAN$LOGO$NC"
