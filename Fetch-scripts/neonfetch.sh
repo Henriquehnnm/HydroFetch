@@ -44,15 +44,6 @@ EOF
     exit 0
 fi
 
-# Criar diretório .neonfetch e baixar fonte 👤
-NEONFETCH_DIR="$HOME/.neonfetch"
-FONT_PATH="$NEONFETCH_DIR/ANSI-Shadow.flf"
-mkdir -p "$NEONFETCH_DIR"
-if [ ! -f "$FONT_PATH" ]; then
-    echo -e "${YELLOW}Baixando a fonte ANSI Shadow...${NC}"
-    curl -o "$FONT_PATH" -L "https://raw.githubusercontent.com/xero/figlet-fonts/master/ANSI%20Shadow.flf"
-fi
-
 # 🎭 Nerd Font Icons (Certifique-se de ter uma fonte Nerd Font instalada!)
 ICON_USER=" "
 ICON_HOST="󰖟 "
@@ -64,7 +55,7 @@ ICON_COLORS=" "
 
 # Nome da Distro com Figlet 🎯
 OS_NAME=$(grep -E '^NAME=' /etc/os-release | cut -d'=' -f2 | tr -d '"')
-LOGO=$(figlet -f "$FONT_PATH" "$OS_NAME")
+LOGO=$(figlet "$OS_NAME")
 
 # Informações do sistema 📊
 USER="$(whoami)"
