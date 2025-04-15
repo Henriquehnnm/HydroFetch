@@ -44,6 +44,11 @@ EOF
     exit 0
 fi
 
+# Criar diretório .neonfetch 👤
+NEONFETCH_DIR="$HOME/.neonfetch"
+FONT_PATH="$NEONFETCH_DIR/Custom.flf"
+mkdir -p "$NEONFETCH_DIR"
+
 # 🎭 Nerd Font Icons (Certifique-se de ter uma fonte Nerd Font instalada!)
 ICON_USER=" "
 ICON_HOST="󰖟 "
@@ -55,7 +60,13 @@ ICON_COLORS=" "
 
 # Nome da Distro com Figlet 🎯
 OS_NAME=$(grep -E '^NAME=' /etc/os-release | cut -d'=' -f2 | tr -d '"')
-LOGO=$(figlet "$OS_NAME")
+if [ -f "$FONT_PATH" ]; then
+    echo -e "${CYAN}"  # Exibe em ciano
+    figlet -f "$FONT_PATH" "$OS_NAME"
+else
+    echo -e "${CYAN}"  # Exibe em ciano
+    figlet "$OS_NAME"
+fi
 
 # Informações do sistema 📊
 USER="$(whoami)"
