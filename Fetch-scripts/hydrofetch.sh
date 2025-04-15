@@ -44,10 +44,10 @@ EOF
     exit 0
 fi
 
-# Criar diretório .neonfetch 👤
-NEONFETCH_DIR="$HOME/.neonfetch"
-FONT_PATH="$NEONFETCH_DIR/Custom.flf"
-mkdir -p "$NEONFETCH_DIR"
+# Criar diretório .hydrofetch 👤
+HYDROFETCH_DIR="$HOME/.hydrofetch"
+FONT_PATH="$HYDROFETCH_DIR/Custom.flf"
+mkdir -p "$HYDROFETCH_DIR"
 
 # 🎭 Nerd Font Icons (Certifique-se de ter uma fonte Nerd Font instalada!)
 ICON_USER=" "

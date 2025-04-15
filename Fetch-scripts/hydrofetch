@@ -45,7 +45,7 @@ EOF
 fi
 
 # Criar diretório .neonfetch 👤
-NEONFETCH_DIR="$HOME/.neonfetch"
+NEONFETCH_DIR="$HOME/.hydrofetch"
 FONT_PATH="$NEONFETCH_DIR/Custom.flf"
 mkdir -p "$NEONFETCH_DIR"
 
