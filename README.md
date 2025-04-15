@@ -5,8 +5,6 @@
 |  _  | |_| | (_| | | | (_) |  _|  __/ || (__| | | |
 |_| |_|\__, |\__,_|_|  \___/|_|  \___|\__\___|_| |_|
        |___/                                        
-
-
 </pre>
 **Hydrofetch** é uma alternativa **minimalista e eficiente** ao antigo Neofetch. Ele exibe informações essenciais do sistema de forma **clean** e **estilosa**.
 
