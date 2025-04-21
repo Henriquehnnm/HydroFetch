@@ -44,10 +44,10 @@ EOF
     exit 0
 fi
 
-# Criar diretório .hydrofetch 👤
-HYDROFETCH_DIR="$HOME/.hydrofetch"
-FONT_PATH="$HYDROFETCH_DIR/Custom.flf"
-mkdir -p "$HYDROFETCH_DIR"
+# Criar diretório .neonfetch 👤
+NEONFETCH_DIR="$HOME/.neonfetch"
+FONT_PATH="$NEONFETCH_DIR/Custom.flf"
+mkdir -p "$NEONFETCH_DIR"
 
 # 🎭 Nerd Font Icons (Certifique-se de ter uma fonte Nerd Font instalada!)
 ICON_USER=" "
@@ -80,18 +80,18 @@ RAM=$(free -h --si | awk 'NR==2 {print $3 " / " $2}')
 echo -e "$CYAN$LOGO$NC"
 
 # Exibir informações dentro de uma única caixa 🏰
-echo -e "${MAGENTA}┌─────────────────────────────────────┐${NC}"
-printf "${MAGENTA}│${WHITE} $ICON_USER ${MAGENTA}│${WHITE} User:   %-22s ${MAGENTA}│${NC}\n" "$USER"
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${NC}"
-printf "${MAGENTA}│${WHITE} $ICON_HOST ${MAGENTA}│${WHITE} Host:   %-22s ${MAGENTA}│${NC}\n" "$HOST"
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${NC}"
-printf "${MAGENTA}│${WHITE} $ICON_OS ${MAGENTA}│${WHITE} OS:     %-22s ${MAGENTA}│${NC}\n" "$OS"
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${NC}"
-printf "${MAGENTA}│${WHITE} $ICON_KERNEL ${MAGENTA}│${WHITE} Kernel: %-22s ${MAGENTA}│${NC}\n" "$KERNEL"
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${NC}"
-printf "${MAGENTA}│${WHITE} $ICON_DE ${MAGENTA}│${WHITE} DE:     %-22s ${MAGENTA}│${NC}\n" "$DE"
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${NC}"
-printf "${MAGENTA}│${WHITE} $ICON_RAM ${MAGENTA}│${WHITE} RAM:    %-22s ${MAGENTA}│${NC}\n" "$RAM"
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}│${NC}"
-printf "${MAGENTA}│${WHITE} $ICON_COLORS${MAGENTA} │${WHITE} Colors: ${RED}${NC}  ${GREEN}${NC}  ${YELLOW}${NC}  ${BLUE}${NC}  ${MAGENTA}${NC}  ${CYAN}${NC}  ${WHITE}${NC}    ${MAGENTA}│${NC}\n"
-echo -e "${MAGENTA}└─────────────────────────────────────┘${NC}"
+echo -e "${MAGENTA}┌──────────────────────────────────────────┐${NC}"
+printf "${MAGENTA}│${WHITE} $ICON_USER ${MAGENTA}│${WHITE} User:   %-22s ${MAGENTA}     │${NC}\n" "$USER"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
+printf "${MAGENTA}│${WHITE} $ICON_HOST ${MAGENTA}│${WHITE} Host:   %-22s ${MAGENTA}     │${NC}\n" "$HOST"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
+printf "${MAGENTA}│${WHITE} $ICON_OS ${MAGENTA}│${WHITE} OS:     %-22s ${MAGENTA}     │${NC}\n" "$OS"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
+printf "${MAGENTA}│${WHITE} $ICON_KERNEL ${MAGENTA}│${WHITE} Kernel: %-22s ${MAGENTA}     │${NC}\n" "$KERNEL"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
+printf "${MAGENTA}│${WHITE} $ICON_DE ${MAGENTA}│${WHITE} DE:     %-22s ${MAGENTA}     │${NC}\n" "$DE"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
+printf "${MAGENTA}│${WHITE} $ICON_RAM ${MAGENTA}│${WHITE} RAM:    %-22s ${MAGENTA}     │${NC}\n" "$RAM"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
+printf "${MAGENTA}│${WHITE} $ICON_COLORS${MAGENTA} │${WHITE} Colors: ${RED} ${NC}  ${GREEN} ${NC}  ${YELLOW} ${NC}  ${BLUE} ${NC}  ${MAGENTA} ${NC}  ${CYAN} ${NC}  ${WHITE} ${NC}  ${MAGENTA}│${NC}\n"
+echo -e "${MAGENTA}└──────────────────────────────────────────┘${NC}"
