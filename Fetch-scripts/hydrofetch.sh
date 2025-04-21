@@ -15,7 +15,7 @@ if [[ "$1" == "--update" ]]; then
         exit 1
     fi
 
-    echo -e "\033[1;33m Removendo script antigo (se existir)...\033[0m"
+    echo -e "\033[1;33m Removendo script antigo...\033[0m"
     rm -f "$LOCAL_SCRIPT"
 
     echo -e "\033[1;34m Baixando nova versão do script...\033[0m"
