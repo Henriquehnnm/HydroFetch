@@ -15,35 +15,20 @@ if [[ "$1" == "--update" ]]; then
         exit 1
     fi
 
-    if [[ -d "$HYDRO_DIR" && -d "$HYDRO_DIR/.git" ]]; then
-        echo -e "\033[1;34m Atualizando via git...\033[0m"
-        cd "$HYDRO_DIR" || {
-            echo -e "\033[1;31m Não consegui acessar o diretório ~/.hydrofetch!\033[0m"
-            exit 1
-        }
+    echo -e "\033[1;33m Removendo script antigo (se existir)...\033[0m"
+    rm -f "$LOCAL_SCRIPT"
 
-        git pull origin main || {
-            echo -e "\033[1;31m Erro ao atualizar com git!\033[0m"
-            exit 1
-        }
+    echo -e "\033[1;34m Baixando nova versão do script...\033[0m"
+    wget -c "$REPO_RAW_URL" -O "$LOCAL_SCRIPT" || {
+        echo -e "\033[1;31m Falha ao baixar o script! Verifique sua conexão.\033[0m"
+        exit 1
+    }
 
-        echo -e "\033[1;32m Atualizado com sucesso via git!\033[0m"
-    else
-        echo -e "\033[1;33m Hydrofetch não foi clonado com git. Usando wget para atualizar...\033[0m"
-
-        echo -e "\033[1;34m Baixando nova versão do script...\033[0m"
-        wget -c "$REPO_RAW_URL" -O "$LOCAL_SCRIPT" || {
-            echo -e "\033[1;31m Falha ao baixar o script! Verifique sua conexão.\033[0m"
-            exit 1
-        }
-
-        chmod +x "$LOCAL_SCRIPT"
-        echo -e "\033[1;32m Script atualizado com sucesso em ~/.hydrofetch.sh!\033[0m"
-    fi
+    chmod +x "$LOCAL_SCRIPT"
+    echo -e "\033[1;32m Script atualizado com sucesso em ~/.hydrofetch.sh!\033[0m"
 
     exit 0
 fi
-
 
 # Cores 🌈
 RED='\033[1;31m'
