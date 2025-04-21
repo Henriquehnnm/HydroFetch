@@ -1,5 +1,50 @@
 #!/bin/bash
 
+# Suporte ao argumento --update 💧🛠️
+if [[ "$1" == "--update" ]]; then
+    echo -e "\033[1;36m Atualizando Hydrofetch...\033[0m"
+
+    HYDRO_DIR="$HOME/.hydrofetch"
+    LOCAL_SCRIPT="$HOME/.hydrofetch.sh"
+    REPO_RAW_URL="https://raw.githubusercontent.com/Henriquehnnm/HydroFetch/main/Fetch-scripts/hydrofetch.sh"
+
+    if command -v wget >/dev/null 2>&1; then
+        echo -e "\033[1;34m Wget encontrado! Continuando...\033[0m"
+    else
+        echo -e "\033[1;31m O comando 'wget' não está instalado! Por favor, instale-o primeiro.\033[0m"
+        exit 1
+    fi
+
+    if [[ -d "$HYDRO_DIR" && -d "$HYDRO_DIR/.git" ]]; then
+        echo -e "\033[1;34m Atualizando via git...\033[0m"
+        cd "$HYDRO_DIR" || {
+            echo -e "\033[1;31m Não consegui acessar o diretório ~/.hydrofetch!\033[0m"
+            exit 1
+        }
+
+        git pull origin main || {
+            echo -e "\033[1;31m Erro ao atualizar com git!\033[0m"
+            exit 1
+        }
+
+        echo -e "\033[1;32m Atualizado com sucesso via git!\033[0m"
+    else
+        echo -e "\033[1;33m Hydrofetch não foi clonado com git. Usando wget para atualizar...\033[0m"
+
+        echo -e "\033[1;34m Baixando nova versão do script...\033[0m"
+        wget -c "$REPO_RAW_URL" -O "$LOCAL_SCRIPT" || {
+            echo -e "\033[1;31m Falha ao baixar o script! Verifique sua conexão.\033[0m"
+            exit 1
+        }
+
+        chmod +x "$LOCAL_SCRIPT"
+        echo -e "\033[1;32m Script atualizado com sucesso em ~/.hydrofetch.sh!\033[0m"
+    fi
+
+    exit 0
+fi
+
+
 # Cores 🌈
 RED='\033[1;31m'
 GREEN='\033[1;32m'
@@ -44,10 +89,10 @@ EOF
     exit 0
 fi
 
-# Criar diretório .neonfetch 👤
-NEONFETCH_DIR="$HOME/.neonfetch"
-FONT_PATH="$NEONFETCH_DIR/Custom.flf"
-mkdir -p "$NEONFETCH_DIR"
+# Criar diretório .hydrofetch 👤
+HYDROFETCH_DIR="$HOME/.hydrofetch"
+FONT_PATH="$HYDROFETCH_DIR/Custom.flf"
+mkdir -p "$HYDROFETCH_DIR"
 
 # 🎭 Nerd Font Icons (Certifique-se de ter uma fonte Nerd Font instalada!)
 ICON_USER=" "
@@ -92,6 +137,4 @@ echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                $
 printf "${MAGENTA}│${WHITE} $ICON_DE ${MAGENTA}│${WHITE} DE:     %-22s ${MAGENTA}     │${NC}\n" "$DE"
 echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
 printf "${MAGENTA}│${WHITE} $ICON_RAM ${MAGENTA}│${WHITE} RAM:    %-22s ${MAGENTA}     │${NC}\n" "$RAM"
-echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
-printf "${MAGENTA}│${WHITE} $ICON_COLORS${MAGENTA} │${WHITE} Colors: ${RED} ${NC}  ${GREEN} ${NC}  ${YELLOW} ${NC}  ${BLUE} ${NC}  ${MAGENTA} ${NC}  ${CYAN} ${NC}  ${WHITE} ${NC}  ${MAGENTA}│${NC}\n"
 echo -e "${MAGENTA}└──────────────────────────────────────────┘${NC}"
