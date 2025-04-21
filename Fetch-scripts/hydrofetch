@@ -30,6 +30,8 @@ if [[ "$1" == "--update" ]]; then
     exit 0
 fi
 
+
+
 # Cores 🌈
 RED='\033[1;31m'
 GREEN='\033[1;32m'
