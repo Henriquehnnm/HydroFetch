@@ -59,13 +59,13 @@ NC='\033[0m' # Sem cor
 if ! command -v figlet &> /dev/null; then
     echo -e "${YELLOW}Figlet não encontrado. Instalando...${NC}"
     if command -v apt &> /dev/null; then
-        sudo apt update && sudo apt install -y figlet
+        sudo apt update && sudo apt install -y figlet wget
     elif command -v dnf &> /dev/null; then
-        sudo dnf install -y figlet
+        sudo dnf install -y figlet wget
     elif command -v pacman &> /dev/null; then
-        sudo pacman -Sy --noconfirm figlet
+        sudo pacman -Sy --noconfirm figlet wget
     elif command -v apk &> /dev/null; then
-        sudo apk add figlet
+        sudo apk add figlet wget
     else
         echo -e "${RED}Gerenciador de pacotes não suportado! Instale o Figlet manualmente.${NC}"
         exit 1
