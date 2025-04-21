@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Suporte ao argumento --update 🛠️
+# Suporte ao argumento --update 🌀
 if [[ "$1" == "--update" ]]; then
     echo -e "\033[1;36m Atualizando Hydrofetch...\033[0m"
 
