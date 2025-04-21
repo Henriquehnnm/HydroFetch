@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Suporte ao argumento --update ⌛
+# Suporte ao argumento --update 🔄
 if [[ "$1" == "--update" ]]; then
     echo -e "\033[1;36m Atualizando Hydrofetch...\033[0m"
 
@@ -16,19 +16,21 @@ if [[ "$1" == "--update" ]]; then
     fi
 
     echo -e "\033[1;33m Removendo script antigo...\033[0m"
-    rm -f "$LOCAL_SCRIPT"
+    rm -f "$LOCAL_SCRIPT" && echo -e "\033[1;33m Script antigo removido com sucesso!\033[0m"
 
     echo -e "\033[1;34m Baixando nova versão do script...\033[0m"
-    wget -c "$REPO_RAW_URL" -O "$LOCAL_SCRIPT" || {
+    wget "$REPO_RAW_URL" -O "$LOCAL_SCRIPT" || {
         echo -e "\033[1;31m Falha ao baixar o script! Verifique sua conexão.\033[0m"
         exit 1
     }
 
-    chmod +x "$LOCAL_SCRIPT"
-    echo -e "\033[1;32m Script atualizado com sucesso em ~/.hydrofetch.sh!\033[0m"
+    chmod +x "$LOCAL_SCRIPT" && echo -e "\033[1;32m Script baixado e tornado executável com sucesso!\033[0m"
+
+    echo -e "\033[1;32m Hydrofetch atualizado com sucesso em ~/.hydrofetch.sh!\033[0m"
 
     exit 0
 fi
+
 
 
 
