@@ -1,39 +1,5 @@
 #!/bin/bash
 
-# Suporte ao argumento --update 🔄
-if [[ "$1" == "--update" ]]; then
-    echo -e "\033[1;36m Atualizando Hydrofetch...\033[0m"
-
-    HYDRO_DIR="$HOME/.hydrofetch"
-    LOCAL_SCRIPT="$HOME/.hydrofetch.sh"
-    REPO_RAW_URL="https://raw.githubusercontent.com/Henriquehnnm/HydroFetch/main/Fetch-scripts/hydrofetch.sh"
-
-    if command -v wget >/dev/null 2>&1; then
-        echo -e "\033[1;34m Wget encontrado! Continuando...\033[0m"
-    else
-        echo -e "\033[1;31m O comando 'wget' não está instalado! Por favor, instale-o primeiro.\033[0m"
-        exit 1
-    fi
-
-    echo -e "\033[1;33m Removendo script antigo...\033[0m"
-    rm -f "$LOCAL_SCRIPT" && echo -e "\033[1;33m Script antigo removido com sucesso!\033[0m"
-
-    echo -e "\033[1;34m Baixando nova versão do script...\033[0m"
-    wget "$REPO_RAW_URL" -O "$LOCAL_SCRIPT" || {
-        echo -e "\033[1;31m Falha ao baixar o script! Verifique sua conexão.\033[0m"
-        exit 1
-    }
-
-    chmod +x "$LOCAL_SCRIPT" && echo -e "\033[1;32m Script baixado e tornado executável com sucesso!\033[0m"
-
-    echo -e "\033[1;32m Hydrofetch atualizado com sucesso em ~/.hydrofetch.sh!\033[0m"
-
-    exit 0
-fi
-
-
-
-
 # Cores 🌈
 RED='\033[1;31m'
 GREEN='\033[1;32m'
@@ -48,13 +14,13 @@ NC='\033[0m' # Sem cor
 if ! command -v figlet &> /dev/null; then
     echo -e "${YELLOW}Figlet não encontrado. Instalando...${NC}"
     if command -v apt &> /dev/null; then
-        sudo apt update && sudo apt install -y figlet wget
+        sudo apt update && sudo apt install -y figlet
     elif command -v dnf &> /dev/null; then
-        sudo dnf install -y figlet wget
+        sudo dnf install -y figlet
     elif command -v pacman &> /dev/null; then
-        sudo pacman -Sy --noconfirm figlet wget
+        sudo pacman -Sy --noconfirm figlet
     elif command -v apk &> /dev/null; then
-        sudo apk add figlet wget
+        sudo apk add figlet
     else
         echo -e "${RED}Gerenciador de pacotes não suportado! Instale o Figlet manualmente.${NC}"
         exit 1
@@ -79,7 +45,7 @@ EOF
 fi
 
 # Criar diretório .hydrofetch 👤
-HYDROFETCH_DIR="$HOME/.hydrofetch"
+NEONFETCH_DIR="$HOME/.hydrofetch"
 FONT_PATH="$HYDROFETCH_DIR/Custom.flf"
 mkdir -p "$HYDROFETCH_DIR"
 
@@ -126,4 +92,6 @@ echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                $
 printf "${MAGENTA}│${WHITE} $ICON_DE ${MAGENTA}│${WHITE} DE:     %-22s ${MAGENTA}     │${NC}\n" "$DE"
 echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
 printf "${MAGENTA}│${WHITE} $ICON_RAM ${MAGENTA}│${WHITE} RAM:    %-22s ${MAGENTA}     │${NC}\n" "$RAM"
+echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
+printf "${MAGENTA}│${WHITE} $ICON_COLORS${MAGENTA} │${WHITE} Colors: ${RED} ${NC}  ${GREEN} ${NC}  ${YELLOW} ${NC}  ${BLUE} ${NC}  ${MAGENTA} ${NC}  ${CYAN} ${NC}  ${WHITE} ${NC}  ${MAGENTA}│${NC}\n"
 echo -e "${MAGENTA}└──────────────────────────────────────────┘${NC}"
