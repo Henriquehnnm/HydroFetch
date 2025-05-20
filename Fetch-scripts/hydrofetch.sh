@@ -45,7 +45,7 @@ EOF
 fi
 
 # Criar diretório .hydrofetch 👤
-HYDROFETCH_DIR="$HOME/.hydrofetch"
+NEONFETCH_DIR="$HOME/.hydrofetch"
 FONT_PATH="$HYDROFETCH_DIR/Custom.flf"
 mkdir -p "$HYDROFETCH_DIR"
 
