@@ -55,7 +55,7 @@ ICON_HOST="󰖟 "
 ICON_OS="󰌽 "
 ICON_KERNEL=" "
 ICON_DE="󰍹 "
-ICON_RAM=" "
+ICON_RAM=" "
 ICON_COLORS=" "
 
 # Nome da Distro com Figlet 🎯
