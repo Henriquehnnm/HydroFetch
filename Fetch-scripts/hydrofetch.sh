@@ -11,15 +11,15 @@ WHITE='\033[1;37m'
 NC='\033[0m' # Sem cor
 
 # Verificar e instalar Figlet 🚀
-if ! command -v figlet &> /dev/null; then
+if ! command -v figlet &>/dev/null; then
     echo -e "${YELLOW}Figlet não encontrado. Instalando...${NC}"
-    if command -v apt &> /dev/null; then
+    if command -v apt &>/dev/null; then
         sudo apt update && sudo apt install -y figlet
-    elif command -v dnf &> /dev/null; then
+    elif command -v dnf &>/dev/null; then
         sudo dnf install -y figlet
-    elif command -v pacman &> /dev/null; then
+    elif command -v pacman &>/dev/null; then
         sudo pacman -Sy --noconfirm figlet
-    elif command -v apk &> /dev/null; then
+    elif command -v apk &>/dev/null; then
         sudo apk add figlet
     else
         echo -e "${RED}Gerenciador de pacotes não suportado! Instale o Figlet manualmente.${NC}"
@@ -31,7 +31,7 @@ fi
 if [[ "$1" == "--tux" ]]; then
     echo -e "${CYAN}Invocando o grande Tux...${NC}"
     echo -e "${BLUE}"
-    cat << 'EOF'
+    cat <<'EOF'
          .--.
         |o_o |
         |:_/ |
@@ -61,10 +61,10 @@ ICON_COLORS=" "
 # Nome da Distro com Figlet 🎯
 OS_NAME=$(grep -E '^NAME=' /etc/os-release | cut -d'=' -f2 | tr -d '"')
 if [ -f "$FONT_PATH" ]; then
-    echo -e "${CYAN}"  # Exibe em ciano
+    echo -e "${CYAN}" # Exibe em ciano
     figlet -f "$FONT_PATH" "$OS_NAME"
 else
-    echo -e "${CYAN}"  # Exibe em ciano
+    echo -e "${CYAN}" # Exibe em ciano
     figlet "$OS_NAME"
 fi
 
