@@ -90,7 +90,7 @@ if [[ "$1" == "--all" ]]; then
     echo -e "${CYAN}===================== USUÁRIO =====================${NC}"
     echo ""
     echo "O usuário logado agora é: $USER"
-    echo "E seu diretório casinha é: $HOME"
+    echo "E seu diretório home é: $HOME"
     echo ""
 
     echo -e "${CYAN}===================== UPTIME =====================${NC}"
@@ -98,14 +98,20 @@ if [[ "$1" == "--all" ]]; then
     echo "O sistema está ligado há: $(uptime -p)"
     echo ""
 
-    echo -e "${CYAN}===================== REDE =====================${NC}"
-    echo ""
-    ipaddr=$(hostname | awk '{print $1}')
-    interface=$(ip route | grep default | awk '{print $5}')
-    echo "O endereço IP da máquina é: ${ipaddr:-Não encontrado}"
-    echo "E a interface de rede padrão é: ${interface:-Desconhecida}"
-    echo ""
-    exit 0
+echo -e "${CYAN}===================== REDE =====================${NC}"
+echo ""
+
+# Pega a interface de rede padrão
+interface=$(ip route | grep default | awk '{print $5}')
+
+# Pega o endereço IP associado à interface de rede
+ipaddr=$(ip -o -4 addr show "$interface" | awk '{print $4}' | cut -d/ -f1)
+
+echo "O endereço IP da máquina é: ${ipaddr:-Não encontrado}"
+echo "E a interface de rede padrão é: ${interface:-Desconhecida}"
+echo ""
+
+exit 0
 fi
 
 # Nerd Font Icons (Certifique-se de ter uma fonte Nerd Font instalada!)
