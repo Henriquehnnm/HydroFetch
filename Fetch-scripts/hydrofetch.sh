@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Cores 🌈
+# Cores
 RED='\033[1;31m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
@@ -10,7 +10,7 @@ CYAN='\033[1;36m'
 WHITE='\033[1;37m'
 NC='\033[0m' # Sem cor
 
-# Verificar e instalar Figlet 🚀
+# Verificar e instalar Figlet
 if ! command -v figlet &>/dev/null; then
     echo -e "${YELLOW}Figlet não encontrado. Instalando...${NC}"
     if command -v apt &>/dev/null; then
@@ -27,7 +27,7 @@ if ! command -v figlet &>/dev/null; then
     fi
 fi
 
-# Easter Egg --tux 🐧
+# Easter Egg --tux
 if [[ "$1" == "--tux" ]]; then
     echo -e "${CYAN}Invocando o grande Tux...${NC}"
     echo -e "${BLUE}"
@@ -44,12 +44,71 @@ EOF
     exit 0
 fi
 
-# Criar diretório .hydrofetch 👤
+# Criar diretório .hydrofetch
 HYDROFETCH_DIR="$HOME/.hydrofetch"
 FONT_PATH="$HYDROFETCH_DIR/Custom.flf"
 mkdir -p "$HYDROFETCH_DIR"
 
-# 🎭 Nerd Font Icons (Certifique-se de ter uma fonte Nerd Font instalada!)
+# Mostrar todas as infos com --all
+if [[ "$1" == "--all" ]]; then
+    echo -e "${MAGENTA}"
+    figlet "InfoSistema"
+    echo -e "${NC}"
+    echo -e "${CYAN}===================== INFORMAÇÕES DO SISTEMA =====================${NC}"
+    echo ""
+    echo "Este computador se chama: $(hostname)"
+    echo "Ele está usando a distribuição: $(source /etc/os-release && echo "$NAME $VERSION")"
+    echo "O kernel do sistema está na versão: $(uname -r)"
+    echo "A arquitetura da máquina é: $(uname -m), o que diz se ela é 64-bits ou não"
+    echo "E o tipo de sistema operacional é: $(uname -o)"
+    echo ""
+
+    echo -e "${CYAN}===================== CPU =====================${NC}"
+    echo ""
+    cpu_model=$(grep -m 1 'model name' /proc/cpuinfo | cut -d ':' -f2 | sed 's/^ //')
+    cpu_cores=$(grep -c ^processor /proc/cpuinfo)
+    echo "O processador deste sistema é: ${cpu_model}"
+    echo "Ele tem um total de: ${cpu_cores} núcleos"
+    echo ""
+
+    echo -e "${CYAN}===================== MEMÓRIA =====================${NC}"
+    echo ""
+    mem_total=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+    mem_total_mb=$((mem_total / 1024))
+    echo "Este computador tem um total de ${mem_total_mb} MB de memória RAM disponível"
+    echo ""
+
+    echo -e "${CYAN}===================== DISCO =====================${NC}"
+    echo ""
+    echo "Aqui estão os detalhes dos dispositivos de armazenamento montados, com seus tamanhos e usos:"
+    echo ""
+    df -h --output=source,fstype,size,used,avail,pcent,target | grep -v tmpfs | grep -v loop | while read linha; do
+        echo "$linha"
+    done
+    echo ""
+
+    echo -e "${CYAN}===================== USUÁRIO =====================${NC}"
+    echo ""
+    echo "O usuário logado agora é: $USER"
+    echo "E seu diretório casinha é: $HOME"
+    echo ""
+
+    echo -e "${CYAN}===================== UPTIME =====================${NC}"
+    echo ""
+    echo "O sistema está ligado há: $(uptime -p)"
+    echo ""
+
+    echo -e "${CYAN}===================== REDE =====================${NC}"
+    echo ""
+    ipaddr=$(hostname | awk '{print $1}')
+    interface=$(ip route | grep default | awk '{print $5}')
+    echo "O endereço IP da máquina é: ${ipaddr:-Não encontrado}"
+    echo "E a interface de rede padrão é: ${interface:-Desconhecida}"
+    echo ""
+    exit 0
+fi
+
+# Nerd Font Icons (Certifique-se de ter uma fonte Nerd Font instalada!)
 ICON_USER=" "
 ICON_HOST="󰖟 "
 ICON_OS="󰌽 "
@@ -58,7 +117,7 @@ ICON_DE="󰍹 "
 ICON_RAM=" "
 ICON_COLORS=" "
 
-# Nome da Distro com Figlet 🎯
+# Nome da Distro com Figlet
 OS_NAME=$(grep -E '^NAME=' /etc/os-release | cut -d'=' -f2 | tr -d '"')
 if [ -f "$FONT_PATH" ]; then
     echo -e "${CYAN}" # Exibe em ciano
@@ -68,7 +127,7 @@ else
     figlet "$OS_NAME"
 fi
 
-# Informações do sistema 📊
+# Informações do sistema
 USER="$(whoami)"
 HOST="$(hostname)"
 OS="$OS_NAME"
@@ -79,7 +138,7 @@ RAM=$(free -h --si | awk 'NR==2 {print $3 " / " $2}')
 # Exibir o logo
 echo -e "$CYAN$LOGO$NC"
 
-# Exibir informações dentro de uma única caixa 🏰
+# Exibir informações dentro de uma única caixa
 echo -e "${MAGENTA}┌──────────────────────────────────────────┐${NC}"
 printf "${MAGENTA}│${WHITE} $ICON_USER ${MAGENTA}│${WHITE} User:   %-22s ${MAGENTA}     │${NC}\n" "$USER"
 echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
