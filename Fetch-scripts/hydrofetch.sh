@@ -145,7 +145,7 @@ RAM=$(free -h --si | awk 'NR==2 {print $3 " / " $2}')
 echo -e "$CYAN$LOGO$NC"
 
 # Exibir informações dentro de uma única caixa
-echo -e "${MAGENTA}┌──────────────────────────────────────────┐${NC}"
+echo -e "${MAGENTA}╭──────────────────────────────────────────╮${NC}"
 printf "${MAGENTA}│${WHITE} $ICON_USER ${MAGENTA}│${WHITE} User:   %-22s ${MAGENTA}     │${NC}\n" "$USER"
 echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
 printf "${MAGENTA}│${WHITE} $ICON_HOST ${MAGENTA}│${WHITE} Host:   %-22s ${MAGENTA}     │${NC}\n" "$HOST"
@@ -159,4 +159,4 @@ echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                $
 printf "${MAGENTA}│${WHITE} $ICON_RAM ${MAGENTA}│${WHITE} RAM:    %-22s ${MAGENTA}     │${NC}\n" "$RAM"
 echo -e "${MAGENTA}│    ${MAGENTA}│${WHITE}                                ${MAGENTA}     │${NC}"
 printf "${MAGENTA}│${WHITE} $ICON_COLORS${MAGENTA} │${WHITE} Colors: ${RED} ${NC}  ${GREEN} ${NC}  ${YELLOW} ${NC}  ${BLUE} ${NC}  ${MAGENTA} ${NC}  ${CYAN} ${NC}  ${WHITE} ${NC}  ${MAGENTA}│${NC}\n"
-echo -e "${MAGENTA}└──────────────────────────────────────────┘${NC}"
+echo -e "${MAGENTA}╰──────────────────────────────────────────╯${NC}"
