@@ -10,6 +10,20 @@ CYAN='\033[1;36m'
 WHITE='\033[1;37m'
 NC='\033[0m' # Sem cor
 
+# Mostrar ajuda
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    echo -e "${CYAN}Uso: $(basename "$0") [opção]${NC}"
+    echo ""
+    echo -e "${GREEN}Opções disponíveis:${NC}"
+    echo -e "  ${YELLOW}--help, -h${NC}       Mostra esta mensagem de ajuda"
+    echo -e "  ${YELLOW}--all${NC}           Mostra todas as informações do sistema completinhas ✨"
+    echo -e "  ${YELLOW}--tux${NC}           Mostra um easter egg do Tux"
+    echo -e "  ${YELLOW}Fonte Customizada${NC}  Para instalar uma fonte customizada, basta colocar o arquivo Custom.flf na pasta ~/.hydrofetch"
+    echo -e "  ${YELLOW}Repositório${NC}  ${BLUE}https://github.com/Henriquehnnm/HydroFetch${NC}"
+    echo ""
+    exit 0
+fi
+
 # Verificar e instalar Figlet
 if ! command -v figlet &>/dev/null; then
     echo -e "${YELLOW}Figlet não encontrado. Instalando...${NC}"
