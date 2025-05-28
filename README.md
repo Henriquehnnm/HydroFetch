@@ -1,18 +1,18 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=50FA7B&height=200&section=header&text=HydroFetch&fontSize=40&fontColor=F8F8F2" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=8BE9FD&height=200&section=header&text=HydroFetch&fontSize=40&fontColor=F8F8F2" />
 </p>
 
 **Hydrofetch** é uma alternativa **minimalista e eficiente** ao antigo Neofetch. Ele exibe informações essenciais do sistema de forma **clean** e **estilosa**.
 
-## 🎨 Características
+## Características
 
-- 🖼 **Design minimalista**: Sem excesso de informações, só o essencial!
-- ⚡ **Rápido e leve**: Executa instantaneamente, sem consumo desnecessário.
-- 🎭 **Estiloso**: Exibe informações do sistema com um toque neon!
-- 💙 **Alternativa moderna ao Neofetch**: Simples, funcional e bonito.
-- 🚀 **Expansível**: Suporte para mais distros chegando nas próximas versões.
+-  **Design minimalista**: Sem excesso de informações, só o essencial!
+-  **Rápido e leve**: Executa instantaneamente, sem consumo desnecessário.
+-  **Estiloso**: Exibe informações do sistema com um toque neon!
+-  **Alternativa moderna ao Neofetch**: Simples, funcional e bonito.
+-  **Expansível**: Suporte para mais distros chegando nas próximas versões.
 
-## 🔧 Instalação
+## Instalação
 
 1. Faça o download do fetch correspondente.
 2. Permita a execução como programa.
@@ -22,18 +22,14 @@
 ### **Requisitos**
 - É necessário ter uma **Nerd Font** instalada para melhor experiência.
 
-## 🏗 Roadmap
-
-- 🚀 **Versão 2.2.5 Beta** – Suporte global a qualquer distribuição base Debian, Arch ou Alpine
-
-## 📸 Preview
+## Preview
 
 ![Screenshot](screenshot.png)
 
-## 💡 Contribuição
+## Contribuição
 
 Sinta-se à vontade para contribuir com melhorias ou novas funcionalidades!
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=50FA7B&height=120&section=footer"/>
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=8BE9FD&height=120&section=footer"/>
 </p>
