@@ -1,11 +1,6 @@
-<pre>
- _   _           _           _____    _       _     
-| | | |_   _  __| |_ __ ___ |  ___|__| |_ ___| |__  
-| |_| | | | |/ _` | '__/ _ \| |_ / _ \ __/ __| '_ \ 
-|  _  | |_| | (_| | | | (_) |  _|  __/ || (__| | | |
-|_| |_|\__, |\__,_|_|  \___/|_|  \___|\__\___|_| |_|
-       |___/                                        
-</pre>
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=50FA7B&height=200&section=header&text=HydroFetch&fontSize=40&fontColor=F8F8F2" />
+</p>
 **Hydrofetch** é uma alternativa **minimalista e eficiente** ao antigo Neofetch. Ele exibe informações essenciais do sistema de forma **clean** e **estilosa**.
 
 ## 🎨 Características
@@ -38,3 +33,6 @@
 
 Sinta-se à vontade para contribuir com melhorias ou novas funcionalidades!
 
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=50FA7B&height=120&section=footer"/>
+</p>
