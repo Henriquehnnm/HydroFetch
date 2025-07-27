@@ -2,7 +2,7 @@
   <img src="https://capsule-render.vercel.app/api?type=waving&color=8BE9FD&height=200&section=header&text=HydroFetch&fontSize=40&fontColor=F8F8F2" />
 </p>
 
-**Hydrofetch** é uma alternativa **minimalista e eficiente** ao antigo Neofetch. Ele exibe informações essenciais do sistema de forma **clean** e **estilosa**.
+**O HydroFetch** é uma alternativa **minimalista e eficiente** ao antigo Neofetch. Ele exibe informações essenciais do sistema de forma **clean** e **estilosa**.
 
 ## Características
 
