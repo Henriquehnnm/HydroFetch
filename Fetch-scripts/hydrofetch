@@ -12,40 +12,40 @@ NC='\033[0m' # Sem cor
 
 # Mostrar ajuda
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-    echo -e "${CYAN}Uso: $(basename "$0") [opção]${NC}"
-    echo ""
-    echo -e "${GREEN}Opções disponíveis:${NC}"
-    echo -e "  ${YELLOW}--help, -h${NC}       Mostra esta mensagem de ajuda"
-    echo -e "  ${YELLOW}--all${NC}           Mostra todas as informações do sistema completinhas ✨"
-    echo -e "  ${YELLOW}--tux${NC}           Mostra um easter egg do Tux"
-    echo -e "  ${YELLOW}Fonte Customizada${NC}  Para instalar uma fonte customizada, basta colocar o arquivo Custom.flf na pasta ~/.hydrofetch"
-    echo -e "  ${YELLOW}Repositório${NC}  ${BLUE}https://github.com/Henriquehnnm/HydroFetch${NC}"
-    echo ""
-    exit 0
+  echo -e "${CYAN}Uso: $(basename "$0") [opção]${NC}"
+  echo ""
+  echo -e "${GREEN}Opções disponíveis:${NC}"
+  echo -e "  ${YELLOW}--help, -h${NC}       Mostra esta mensagem de ajuda"
+  echo -e "  ${YELLOW}--all${NC}           Mostra todas as informações do sistema completas"
+  echo -e "  ${YELLOW}--tux${NC}           Mostra um easter egg do Tux"
+  echo -e "  ${YELLOW}Fonte Customizada${NC}  Para instalar uma fonte customizada, basta colocar o arquivo Custom.flf na pasta ~/.hydrofetch"
+  echo -e "  ${YELLOW}Repositório${NC}  ${BLUE}https://github.com/Henriquehnnm/HydroFetch${NC}"
+  echo ""
+  exit 0
 fi
 
 # Verificar e instalar Figlet
 if ! command -v figlet &>/dev/null; then
-    echo -e "${YELLOW}Figlet não encontrado. Instalando...${NC}"
-    if command -v apt &>/dev/null; then
-        sudo apt update && sudo apt install -y figlet
-    elif command -v dnf &>/dev/null; then
-        sudo dnf install -y figlet
-    elif command -v pacman &>/dev/null; then
-        sudo pacman -Sy --noconfirm figlet
-    elif command -v apk &>/dev/null; then
-        sudo apk add figlet
-    else
-        echo -e "${RED}Gerenciador de pacotes não suportado! Instale o Figlet manualmente.${NC}"
-        exit 1
-    fi
+  echo -e "${YELLOW}Figlet não encontrado. Instalando...${NC}"
+  if command -v apt &>/dev/null; then
+    sudo apt update && sudo apt install -y figlet
+  elif command -v dnf &>/dev/null; then
+    sudo dnf install -y figlet
+  elif command -v pacman &>/dev/null; then
+    sudo pacman -Sy --noconfirm figlet
+  elif command -v apk &>/dev/null; then
+    sudo apk add figlet
+  else
+    echo -e "${RED}Gerenciador de pacotes não suportado! Instale o Figlet manualmente.${NC}"
+    exit 1
+  fi
 fi
 
 # Easter Egg --tux
 if [[ "$1" == "--tux" ]]; then
-    echo -e "${CYAN}Invocando o grande Tux...${NC}"
-    echo -e "${BLUE}"
-    cat <<'EOF'
+  echo -e "${CYAN}Invocando o grande Tux...${NC}"
+  echo -e "${BLUE}"
+  cat <<'EOF'
          .--.
         |o_o |
         |:_/ |
@@ -54,8 +54,8 @@ if [[ "$1" == "--tux" ]]; then
      /'\_   _/`\
      \___)=(___/
 EOF
-    echo -e "${NC}"
-    exit 0
+  echo -e "${NC}"
+  exit 0
 fi
 
 # Criar diretório .hydrofetch
@@ -65,67 +65,67 @@ mkdir -p "$HYDROFETCH_DIR"
 
 # Mostrar todas as infos com --all
 if [[ "$1" == "--all" ]]; then
-    echo -e "${MAGENTA}"
-    figlet "InfoSistema"
-    echo -e "${NC}"
-    echo -e "${CYAN}===================== INFORMAÇÕES DO SISTEMA =====================${NC}"
-    echo ""
-    echo "Este computador se chama: $(hostname)"
-    echo "Ele está usando a distribuição: $(source /etc/os-release && echo "$NAME $VERSION")"
-    echo "O kernel do sistema está na versão: $(uname -r)"
-    echo "A arquitetura da máquina é: $(uname -m), o que diz se ela é 64-bits ou não"
-    echo "E o tipo de sistema operacional é: $(uname -o)"
-    echo ""
+  echo -e "${MAGENTA}"
+  figlet "InfoSistema"
+  echo -e "${NC}"
+  echo -e "${CYAN}===================== INFORMAÇÕES DO SISTEMA =====================${NC}"
+  echo ""
+  echo "Este computador se chama: $(hostname)"
+  echo "Ele está usando a distribuição: $(source /etc/os-release && echo "$NAME $VERSION")"
+  echo "O kernel do sistema está na versão: $(uname -r)"
+  echo "A arquitetura da máquina é: $(uname -m), o que diz se ela é 64-bits ou não"
+  echo "E o tipo de sistema operacional é: $(uname -o)"
+  echo ""
 
-    echo -e "${CYAN}===================== CPU =====================${NC}"
-    echo ""
-    cpu_model=$(grep -m 1 'model name' /proc/cpuinfo | cut -d ':' -f2 | sed 's/^ //')
-    cpu_cores=$(grep -c ^processor /proc/cpuinfo)
-    echo "O processador deste sistema é: ${cpu_model}"
-    echo "Ele tem um total de: ${cpu_cores} núcleos"
-    echo ""
+  echo -e "${CYAN}===================== CPU =====================${NC}"
+  echo ""
+  cpu_model=$(grep -m 1 'model name' /proc/cpuinfo | cut -d ':' -f2 | sed 's/^ //')
+  cpu_cores=$(grep -c ^processor /proc/cpuinfo)
+  echo "O processador deste sistema é: ${cpu_model}"
+  echo "Ele tem um total de: ${cpu_cores} núcleos"
+  echo ""
 
-    echo -e "${CYAN}===================== MEMÓRIA =====================${NC}"
-    echo ""
-    mem_total=$(grep MemTotal /proc/meminfo | awk '{print $2}')
-    mem_total_mb=$((mem_total / 1024))
-    echo "Este computador tem um total de ${mem_total_mb} MB de memória RAM disponível"
-    echo ""
+  echo -e "${CYAN}===================== MEMÓRIA =====================${NC}"
+  echo ""
+  mem_total=$(grep MemTotal /proc/meminfo | awk '{print $2}')
+  mem_total_mb=$((mem_total / 1024))
+  echo "Este computador tem um total de ${mem_total_mb} MB de memória RAM disponível"
+  echo ""
 
-    echo -e "${CYAN}===================== DISCO =====================${NC}"
-    echo ""
-    echo "Aqui estão os detalhes dos dispositivos de armazenamento montados, com seus tamanhos e usos:"
-    echo ""
-    df -h --output=source,fstype,size,used,avail,pcent,target | grep -v tmpfs | grep -v loop | while read linha; do
-        echo "$linha"
-    done
-    echo ""
+  echo -e "${CYAN}===================== DISCO =====================${NC}"
+  echo ""
+  echo "Aqui estão os detalhes dos dispositivos de armazenamento montados, com seus tamanhos e usos:"
+  echo ""
+  df -h --output=source,fstype,size,used,avail,pcent,target | grep -v tmpfs | grep -v loop | while read linha; do
+    echo "$linha"
+  done
+  echo ""
 
-    echo -e "${CYAN}===================== USUÁRIO =====================${NC}"
-    echo ""
-    echo "O usuário logado agora é: $USER"
-    echo "E seu diretório home é: $HOME"
-    echo ""
+  echo -e "${CYAN}===================== USUÁRIO =====================${NC}"
+  echo ""
+  echo "O usuário logado agora é: $USER"
+  echo "E seu diretório home é: $HOME"
+  echo ""
 
-    echo -e "${CYAN}===================== UPTIME =====================${NC}"
-    echo ""
-    echo "O sistema está ligado há: $(uptime -p)"
-    echo ""
+  echo -e "${CYAN}===================== UPTIME =====================${NC}"
+  echo ""
+  echo "O sistema está ligado há: $(uptime -p)"
+  echo ""
 
-echo -e "${CYAN}===================== REDE =====================${NC}"
-echo ""
+  echo -e "${CYAN}===================== REDE =====================${NC}"
+  echo ""
 
-# Pega a interface de rede padrão
-interface=$(ip route | grep default | awk '{print $5}')
+  # Pega a interface de rede padrão
+  interface=$(ip route | grep default | awk '{print $5}')
 
-# Pega o endereço IP associado à interface de rede
-ipaddr=$(ip -o -4 addr show "$interface" | awk '{print $4}' | cut -d/ -f1)
+  # Pega o endereço IP associado à interface de rede
+  ipaddr=$(ip -o -4 addr show "$interface" | awk '{print $4}' | cut -d/ -f1)
 
-echo "O endereço IP da máquina é: ${ipaddr:-Não encontrado}"
-echo "E a interface de rede padrão é: ${interface:-Desconhecida}"
-echo ""
+  echo "O endereço IP da máquina é: ${ipaddr:-Não encontrado}"
+  echo "E a interface de rede padrão é: ${interface:-Desconhecida}"
+  echo ""
 
-exit 0
+  exit 0
 fi
 
 # Nerd Font Icons (Certifique-se de ter uma fonte Nerd Font instalada!)
@@ -140,11 +140,11 @@ ICON_COLORS=" "
 # Nome da Distro com Figlet
 OS_NAME=$(grep -E '^NAME=' /etc/os-release | cut -d'=' -f2 | tr -d '"')
 if [ -f "$FONT_PATH" ]; then
-    echo -e "${CYAN}" # Exibe em ciano
-    figlet -f "$FONT_PATH" "$OS_NAME"
+  echo -e "${CYAN}" # Exibe em ciano
+  figlet -f "$FONT_PATH" "$OS_NAME"
 else
-    echo -e "${CYAN}" # Exibe em ciano
-    figlet "$OS_NAME"
+  echo -e "${CYAN}" # Exibe em ciano
+  figlet "$OS_NAME"
 fi
 
 # Informações do sistema
