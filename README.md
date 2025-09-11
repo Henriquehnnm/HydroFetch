@@ -4,7 +4,7 @@
   <b>A modern, minimalist, and stylish system information tool.</b>
 </p>
 
-HydroFetch is a **fast and lightweight alternative to Neofetch**, focusing on simplicity, aesthetics, and essential system information. Its clean presentation and neon-inspired style make it the perfect choice for users who want their terminal to look great without unnecessary clutter.
+HydroFetch is a **fast and lightweight alternative to Neofetch**, focusing on simplicity, aesthetics, and essential system information. Its clean presentation and neon-inspired style make it the perfe[...]
 
 ## Features
 
@@ -55,11 +55,10 @@ HydroFetch is a **fast and lightweight alternative to Neofetch**, focusing on si
 
 ## Preview
 
-<img align="center">
+<p align="center">
+  <img src="screenshot.png" alt="Screenshot" />
+</p>
 
-![Screenshot](screenshot.png)
-
-</img>
 ## Contribution
 
 Contributions are welcome!  
