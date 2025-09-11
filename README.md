@@ -55,8 +55,10 @@ HydroFetch is a **fast and lightweight alternative to Neofetch**, focusing on si
 
 ## Preview
 
-<img allign="center">
+<img align="center">
+
 ![Screenshot](screenshot.png)
+
 </img>
 ## Contribution
 
