@@ -55,7 +55,7 @@ fi
 
 # Easter Egg --tux
 if [[ "$1" == "--tux" ]]; then
-  echo -e "${CYAN}Invocando o grande Tux...${NC}"
+  echo -e "${CYAN}O grande Tux...${NC}"
   echo -e "${BLUE}"
   cat <<'EOF'
          .--.
