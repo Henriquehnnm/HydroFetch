@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Versão
+VERSION="2.4.4"
+
 # Cores
 RED='\033[1;31m'
 GREEN='\033[1;32m'
@@ -16,14 +19,21 @@ if [[ "$1" == "-h" || "$1" == "--help" ]]; then
   echo ""
   echo -e "${GREEN}Opções disponíveis:${NC}"
   echo -e "  ${YELLOW}--help, -h${NC}         Mostra esta mensagem de ajuda"
-  echo -e "  ${YELLOW}--all${NC}              Mostra todas as informações do sistema completas"
+  echo -e "  ${YELLOW}--version, -v${NC}      MOstra a versão do HydroFetch"
   echo -e "  ${YELLOW}--min, -m${NC}          Mostra as informações em modo mínimo"
+  echo -e "  ${YELLOW}--all, -a${NC}          Mostra todas as informações do sistema completas"
   echo -e "  ${YELLOW}--tux${NC}              Mostra um easter egg do Tux"
   echo -e "\n${GREEN}Ajuda:${NC}"
   echo -e "  ${YELLOW}Fonte Customizada${NC}  Para instalar uma fonte customizada, basta colocar o arquivo Custom.flf na pasta ~/.hydrofetch"
   echo -e "  ${YELLOW}Repositório${NC}        ${BLUE}https://github.com/Henriquehnnm/HydroFetch${NC}"
   echo ""
   exit 0
+fi
+
+# Mostrar versão
+if [[ "$1" == "-v" || "$1" == "--version" ]]; then
+    echo -e "  \nHydroFetch ${YELLOW}${VERSION}${NC} created by ${BLUE}Henriquehnnm${NC}"
+    exit 0
 fi
 
 # Verificar e instalar Figlet
@@ -66,7 +76,7 @@ FONT_PATH="$HYDROFETCH_DIR/Custom.flf"
 mkdir -p "$HYDROFETCH_DIR"
 
 # Mostrar todas as infos com --all
-if [[ "$1" == "--all" ]]; then
+if [[ "$1" == "-a" || "$1" == "--all" ]]; then
   echo -e "${MAGENTA}"
   figlet "InfoSistema"
   echo -e "${NC}"
