@@ -12,14 +12,16 @@ NC='\033[0m' # Sem cor
 
 # Mostrar ajuda
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-  echo -e "${CYAN}Uso: $(basename "$0") [opção]${NC}"
+  echo -e "${CYAN}\nUso: $(basename "$0") [opção]${NC}"
   echo ""
   echo -e "${GREEN}Opções disponíveis:${NC}"
-  echo -e "  ${YELLOW}--help, -h${NC}       Mostra esta mensagem de ajuda"
-  echo -e "  ${YELLOW}--all${NC}           Mostra todas as informações do sistema completas"
-  echo -e "  ${YELLOW}--tux${NC}           Mostra um easter egg do Tux"
+  echo -e "  ${YELLOW}--help, -h${NC}         Mostra esta mensagem de ajuda"
+  echo -e "  ${YELLOW}--all${NC}              Mostra todas as informações do sistema completas"
+  echo -e "  ${YELLOW}--min, -m${NC}          Mostra as informações em modo mínimo"
+  echo -e "  ${YELLOW}--tux${NC}              Mostra um easter egg do Tux"
+  echo -e "\n${GREEN}Ajuda:${NC}"
   echo -e "  ${YELLOW}Fonte Customizada${NC}  Para instalar uma fonte customizada, basta colocar o arquivo Custom.flf na pasta ~/.hydrofetch"
-  echo -e "  ${YELLOW}Repositório${NC}  ${BLUE}https://github.com/Henriquehnnm/HydroFetch${NC}"
+  echo -e "  ${YELLOW}Repositório${NC}        ${BLUE}https://github.com/Henriquehnnm/HydroFetch${NC}"
   echo ""
   exit 0
 fi
@@ -154,6 +156,12 @@ OS="$OS_NAME"
 KERNEL="$(uname -r)"
 DE="${XDG_CURRENT_DESKTOP:-N/A}"
 RAM=$(free -h --si | awk 'NR==2 {print $3 " / " $2}')
+
+# Min mode
+if [[ "$1" == "-m" || "$1" == "--min" ]]; then
+    echo -e "${RED}${OS}${NC} • ${YELLOW}${USER}${NC} • ${GREEN}${DE}${NC} "
+    exit 0
+fi
 
 # Exibir o logo
 echo -e "$CYAN$LOGO$NC"
