@@ -44,7 +44,7 @@ if ! command -v figlet &>/dev/null; then
   elif command -v dnf &>/dev/null; then
     sudo dnf install -y figlet
   elif command -v pacman &>/dev/null; then
-    sudo pacman -Sy --noconfirm figlet
+    sudo pacman -Sy --noconfirm figlet inetutils
   elif command -v apk &>/dev/null; then
     sudo apk add figlet
   else
