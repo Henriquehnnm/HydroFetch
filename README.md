@@ -1,5 +1,5 @@
 <h1 align="center">HydroFetch</h1>
-**The primary version is now the Fish script!** 🎉
+The primary version is now the Fish script! 🎉
 
 <p align="center">
   <b>A modern, minimalist, and stylish system information tool.</b>
