@@ -1,11 +1,11 @@
 <h1 align="center">HydroFetch</h1>
-The primary version is now the Fish script! 🎉
 
 <p align="center">
-  <b>A modern, minimalist, and stylish system information tool.</b>
+  <strong>The primary version is now the Fish script! 🎉</strong>
 </p>
+<p align="center">A modern, minimalist, and stylish system information tool.</p>
 
-HydroFetch is a **fast and lightweight alternative to Neofetch**, focusing on simplicity, aesthetics, and essential system information. Its clean presentation and neon-inspired style make it the perfe[...]
+HydroFetch is a **fast and lightweight alternative to Neofetch**, focusing on simplicity, aesthetics, and essential system information.
 
 ## Features
 
