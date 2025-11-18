@@ -36,7 +36,7 @@ if [[ "$1" == "-v" || "$1" == "--version" ]]; then
     exit 0
 fi
 
-# Verificar e instalar Figlet
+# Verificar e instalar dependencias
 if ! command -v figlet &>/dev/null; then
   echo -e "${YELLOW}Figlet não encontrado. Instalando...${NC}"
   if command -v apt &>/dev/null; then
