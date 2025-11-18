@@ -1,4 +1,5 @@
 <h1 align="center">HydroFetch</h1>
+**The primary version is now the Fish script!** 🎉
 
 <p align="center">
   <b>A modern, minimalist, and stylish system information tool.</b>
@@ -16,19 +17,19 @@ HydroFetch is a **fast and lightweight alternative to Neofetch**, focusing on si
 
 ## Installation
 
-1. **Download** the appropriate `hydrofetch.sh` script from this repository.
+1. **Download** the appropriate `hydrofetch.fish` script from this repository.
 2. **Make it executable:**
    ```bash
-   chmod +x hydrofetch.sh
+   chmod +x hydrofetch.fish
    ```
 3. **Run the script:**
-   ```bash
-   ./hydrofetch.sh
+   ```fish
+   ./hydrofetch.fish
    ```
-4. *(Optional)* **Create an alias** in your shell configuration for easy access:
-   ```bash
-   echo "alias hydrofetch='~/path/to/hydrofetch.sh'" >> ~/.bashrc
-   source ~/.bashrc
+4. *(Optional)* **Create an alias** in your fish shell configuration for easy access:
+   ```fish
+   echo "alias hydrofetch='~/path/to/hydrofetch.fish'" >> ~/.config/fish/config.fish
+   source ~/.config/fish/config.fish
    ```
 
 ### Requirements
@@ -38,6 +39,14 @@ HydroFetch is a **fast and lightweight alternative to Neofetch**, focusing on si
 
 ## Usage
 
+### Fish Version (Recommended)
+The Fish version is the primary and most feature-rich version of HydroFetch.
+```fish
+./hydrofetch.fish [option]
+```
+
+### Bash Version (Legacy)
+A legacy version for `bash` users is also available, though it may not receive all new features.
 ```bash
 ./hydrofetch.sh [option]
 ```
@@ -48,7 +57,7 @@ HydroFetch is a **fast and lightweight alternative to Neofetch**, focusing on si
   Show the help message with usage instructions.
 - `--all`  
   Display detailed and complete system information.
-- `--tux`  
+- `--tux`  (Only in the Bash version, farewell easter egg for this version)
   Show a fun Tux (Linux mascot) easter egg.
 - **Custom Font:**  
   For a personalized ASCII logo, place a `Custom.flf` font file in `~/.hydrofetch`.
