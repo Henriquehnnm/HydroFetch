@@ -20,7 +20,7 @@ if [[ "$1" == "-h" || "$1" == "--help" ]]; then
   echo ""
   echo -e "${GREEN}Opções disponíveis:${NC}"
   echo -e "  ${YELLOW}--help, -h${NC}         Mostra esta mensagem de ajuda"
-  echo -e "  ${YELLOW}--version, -v${NC}      MOstra a versão do HydroFetch"
+  echo -e "  ${YELLOW}--version, -v${NC}      Mostra a versão do HydroFetch"
   echo -e "  ${YELLOW}--min, -m${NC}          Mostra as informações em modo mínimo"
   echo -e "  ${YELLOW}--all, -a${NC}          Mostra todas as informações do sistema completas"
   echo -e "  ${YELLOW}--tux${NC}              Mostra um easter egg do Tux"
