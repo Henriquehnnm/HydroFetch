@@ -39,8 +39,8 @@ fi
 # Verificar e instalar dependencias
 if ! command -v figlet &>/dev/null; then
   echo -e "${YELLOW}Figlet não encontrado. Instalando...${NC}"
-  if command -v apt &>/dev/null; then
-    sudo apt update && sudo apt install -y figlet
+  if command -v apt-get &>/dev/null; then
+    sudo apt-get update && sudo apt-get install -y figlet
   elif command -v dnf &>/dev/null; then
     sudo dnf install -y figlet
   elif command -v pacman &>/dev/null; then
