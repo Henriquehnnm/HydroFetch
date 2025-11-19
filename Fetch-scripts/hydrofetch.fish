@@ -53,11 +53,14 @@ if not command -v figlet &>/dev/null
     echo -e "$YELLOW Dependencias não encontradas. Instalando..."
 
     if command -v apt &>/dev/null
-        sudo apt update && sudo apt install -y figlet
+        sudo apt-get update && sudo apt-get install -y figlet
     else if command -v dnf &>/dev/null
         sudo dnf install -y figlet
     else if command -v pacman &>/dev/null
         sudo pacman -Sy --noconfirm figlet inetutils
+    else if command -v zypper &>/dev/null
+        sudo zypper refresh
+        sudo zypper --non-interactive install figlet
     else if command -v apk &>/dev/null
         sudo apk add figlet
     else
