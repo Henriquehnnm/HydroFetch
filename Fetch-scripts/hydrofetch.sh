@@ -45,6 +45,9 @@ if ! command -v figlet &>/dev/null; then
     sudo dnf install -y figlet
   elif command -v pacman &>/dev/null; then
     sudo pacman -Sy --noconfirm figlet inetutils
+  elif command -v zypper &>/dev/null; then
+    sudo zypper refresh
+    sudo zypper --non-interactive install figlet
   elif command -v apk &>/dev/null; then
     sudo apk add figlet
   else
