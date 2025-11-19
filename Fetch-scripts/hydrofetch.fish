@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # Versão
-set VERSION "2.4.5 Fish Edition"
+set VERSION "2.4.6 Fish Edition"
 
 # Cores
 set RED '\033[1;31m'
