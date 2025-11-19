@@ -1,4 +1,3 @@
-
 #!/usr/bin/env fish
 
 # Versão
