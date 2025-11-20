@@ -10,6 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/Henriquehnnm/HydroFetch/releases">
+    <img src="https://img.shields.io/badge/Made%20with-Fish-1f95e6?style=for-the-badge&logo=fishshell&logoColor=white&color=96dd4b&labelColor=151b23" />
     <img src="https://img.shields.io/github/v/release/Henriquehnnm/HydroFetch?style=for-the-badge&color=96dd4b&labelColor=151b23&logoColor=ffffff" />
   </a>
 </p>
