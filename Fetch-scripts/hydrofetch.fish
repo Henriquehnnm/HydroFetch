@@ -184,11 +184,9 @@ end
 # Min mode
 if test "$argv[1]" = '-m'
     or test "$argv[1]" = '--min'
-    echo -e "$RED $OS $NC•$YELLOW $USER $NC•$GREEN $DE $NC "
+    echo -e "\n$RED $OS $NC•$YELLOW $USER $NC•$GREEN $DE $NC "
     exit 0
 end
-
-
 
 # Exibir informações dentro de uma única caixa
 echo -e "$MAGENTA╭──────────────────────────────────────────╮$NC"
