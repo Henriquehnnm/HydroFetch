@@ -184,7 +184,13 @@ end
 # Min mode
 if test "$argv[1]" = '-m'
     or test "$argv[1]" = '--min'
-    echo -e "\n$RED $OS $NC•$YELLOW $USER $NC•$GREEN $DE $NC "
+
+    if test -f $LOGOS_PATH
+        echo -e "\n$RED $OS $NC•$YELLOW $USER $NC•$GREEN $DE $NC "
+    else
+        echo -e "$RED $OS $NC•$YELLOW $USER $NC•$GREEN $DE $NC "
+    end
+
     exit 0
 end
 
