@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # Versão
-set VERSION "2.4.7 Fish Edition"
+set VERSION "2.4.8 Fish Edition"
 
 # Cores
 set RED '\033[1;31m'
@@ -27,16 +27,16 @@ if test "$argv[1]" = "-h"
 
    set -l SCRIPT_NAME (basename (status current-filename))
 
-    echo -e "$CYAN\nUso: $SCRIPT_NAME [opção]$NC"
+    echo -e "$CYAN\nUsage: $SCRIPT_NAME [option]$NC"
     echo ""
-        echo -e "$GREEN Opções disponíveis:$NC"
-        echo -e "  $YELLOW--help, -h$NC          Mostra esta mensagem de ajuda"
-        echo -e "  $YELLOW--version, -v$NC       Mostra a versão do HydroFetch"
-        echo -e "  $YELLOW--min, -m$NC           Mostra as informações em modo mínimo"
-        echo -e "  $YELLOW--all, -a$NC           Mostra todas as informações do sistema completas"
-        echo -e "\n$GREEN Ajuda:$NC"
-        echo -e "  $YELLOW Fonte Customizada$NC  Para instalar uma fonte customizada, basta colocar o arquivo Custom.flf na pasta ~/.hydrofetch"
-        echo -e "  $YELLOW Repositório$NC       $BLUE https://github.com/Henriquehnnm/HydroFetch$NC"
+        echo -e "$GREEN Available options:$NC"
+        echo -e "  $YELLOW--help, -h$NC          Show this help message"
+        echo -e "  $YELLOW--version, -v$NC       Shows the HydroFetch version"
+        echo -e "  $YELLOW--min, -m$NC           Shows information in minimal mode"
+        echo -e "  $YELLOW--all, -a$NC           Shows all complete system information"
+        echo -e "\n$GREEN Help:$NC"
+        echo -e "  $YELLOW Custom fonts$NC  To install a custom font, simply place the Custom.flf file in the ~/.hydrofetch folder"
+        echo -e "  $YELLOW Repository$NC       $BLUE https://github.com/Henriquehnnm/HydroFetch$NC"
         echo ""
         exit 0
 end
@@ -50,7 +50,7 @@ end
 
 # Verificar e instalar dependencias
 if not command -v figlet &>/dev/null
-    echo -e "$YELLOW Dependencias não encontradas. Instalando..."
+    echo -e "$YELLOW Dependencies not found. Installing..."
 
     if command -v apt &>/dev/null
         sudo apt-get update && sudo apt-get install -y figlet jq
@@ -64,7 +64,7 @@ if not command -v figlet &>/dev/null
     else if command -v apk &>/dev/null
         sudo apk add figlet jq
     else
-       echo -e "$RED Gerenciador de pacotes não suportado! Instale o Figlet e o Inetutils manualmente."
+       echo -e "$RED Package manager not supported! Install dependencies manually. (Figlet, jq and inetutils for arch)"
     end
 end
 
@@ -75,16 +75,16 @@ if test "$argv[1]" = "-a"
     figlet "InfoSystem"
     echo -e "$NC"
 
-    echo -e "$CYAN──────────────────── INFORMAÇÕES DO SISTEMA ────────────────────$NC"
+    echo -e "$CYAN──────────────────── SYSTEM INFORMATION ────────────────────$NC"
     echo ""
     echo "Hostname: $HOST"
-    echo "Sistema operacional: $OS"
-    echo "Versão do Kernel: $(uname -r)"
-    echo "Arquitetura: $(uname -m)"
-    echo "Tipo de sistema operacional: $(uname -o)"
+    echo "Operating system: $OS"
+    echo "Kernel Version: $(uname -r)"
+    echo "Architecture: $(uname -m)"
+    echo "Operating system type: $(uname -o)"
     echo ""
 
-    echo -e "$CYAN──────────────────── CPU e GPU ────────────────────$NC"
+    echo -e "$CYAN──────────────────── CPU and GPU ────────────────────$NC"
     echo ""
     set cpu_model (grep -m 1 'model name' /proc/cpuinfo | cut -d ':' -f2 | sed 's/^ //')
     set cpu_cores (grep -c ^processor /proc/cpuinfo)
@@ -94,22 +94,22 @@ if test "$argv[1]" = "-a"
     echo "GPU: $gpu_model"
     echo ""
 
-    echo -e "$CYAN──────────────────── MEMÓRIA ────────────────────$NC"
+    echo -e "$CYAN──────────────────── MEMORY ────────────────────$NC"
       echo ""
       set mem_total (grep MemTotal /proc/meminfo | awk '{print $2}')
       set mem_total_mb (math "$mem_total / 1024")
-      echo "Memória RAM: $mem_total_mb mb"
+      echo "RAM memory: $mem_total_mb mb"
       echo ""
 
       echo -e "$CYAN─────────────────── USUÁRIO ────────────────────$NC"
       echo ""
-      echo -e "Usuário: $USER"
+      echo -e "User: $USER"
       echo "Home: $HOME"
       echo ""
 
       echo -e "$CYAN──────────────────── UPTIME ────────────────────$NC"
       echo ""
-      echo "O sistema está ligado há: $(uptime -p)"
+      echo "The system has been on for: $(uptime -p)"
       echo ""
 
       echo -e "$CYAN──────────────────── REDE ────────────────────$NC"
@@ -122,7 +122,7 @@ if test "$argv[1]" = "-a"
       set ipaddr (ip -o -4 addr show $interface | awk '{print $4}' | cut -d/ -f1; or echo N/A)
 
       echo "IP: $(string replace -r '^$' N/A $ipaddr)"
-      echo "Interface de rede: $(string replace -r '^$' N/A $interface)"
+      echo "Network Interface: $(string replace -r '^$' N/A $interface)"
       echo ""
 
       exit 0
