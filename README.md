@@ -65,7 +65,7 @@ A legacy version for `bash` users is also available, though it may not receive a
 ## Preview
 
 <p align="center">
-  <img src="screenshot.png" alt="Screenshot" />
+  <img width="598" height="511" alt="image" src="https://github.com/user-attachments/assets/930ed3d4-d452-4b13-9eaa-907162179bb0" />
 </p>
 
 ## Contribution
