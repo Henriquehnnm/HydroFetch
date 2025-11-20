@@ -1,7 +1,41 @@
 #!/usr/bin/env fish
 
 # Versão
-set VERSION "2.4.8 Fish Edition"
+set VERSION "2.4.9 Fish Edition"
+
+# Criar diretório ~/.hydrofetch
+# Dirs
+set HYDROFETCH_DIR "$HOME/.config/hydrofetch"
+set PLUGINS_DIR "$HYDROFETCH_DIR/Plugins"
+set LOCAL_DIR "$HOME/.local/share/hydrofetch/"
+
+# Path's
+set CONFIG_PATH "$HYDROFETCH_DIR/Config.json"
+set LOGOS_PATH "$PLUGINS_DIR/Logos.json"
+set FONT_PATH "$HYDROFETCH_DIR/Custom.flf"
+
+# Mkdir
+mkdir -p "$HYDROFETCH_DIR"
+mkdir -p "$PLUGINS_DIR"
+
+if test -f $CONFIG_PATH
+    and test -s $CONFIG_PATH
+    set ICON_USER (jq -r '.ICON_USER // " "' $CONFIG_PATH)
+    set ICON_HOST (jq -r '.ICON_HOST // "󰖟 "' $CONFIG_PATH)
+    set ICON_OS (jq -r '.ICON_OS // "󰌽 "' $CONFIG_PATH)
+    set ICON_KERNEL (jq -r '.ICON_KERNEL // " "' $CONFIG_PATH)
+    set ICON_DE (jq -r '.ICON_DE // "󰍹 "' $CONFIG_PATH)
+    set ICON_RAM (jq -r '.ICON_RAM // " "' $CONFIG_PATH)
+    set ICON_COLORS (jq -r '.ICON_COLORS // " "' $CONFIG_PATH)
+else
+    set ICON_USER " "
+    set ICON_HOST "󰖟 "
+    set ICON_OS "󰌽 "
+    set ICON_KERNEL " "
+    set ICON_DE "󰍹 "
+    set ICON_RAM " "
+    set ICON_COLORS " "
+end
 
 # Cores
 set RED '\033[1;31m'
@@ -13,6 +47,60 @@ set CYAN '\033[1;36m'
 set WHITE '\033[1;37m'
 set NC '\033[0m'
 
+# Língua
+set LANG_CODE (string split '.' $LANG | head -n1)
+set TRANSLATIONS_FILE "$LOCAL_DIR/translations/$LANG_CODE.json"
+
+if test -f $TRANSLATIONS_FILE
+    for key in (jq -r 'keys[]' $TRANSLATIONS_FILE)
+        set -g $key (jq -r ".$key" $TRANSLATIONS_FILE)
+    end
+else
+    ## Help
+    set HF_HELP_USAGE 'Usage:'
+    set HF_HELP_OPTION '[option]'
+    set HF_HELP_OPTIONS "Available options:"
+    set HF_HELP_SHOW_HELP "Show this help message"
+    set HF_HELP_SHOW_VERSION "Shows the HydroFetch version"
+    set HF_HELP_MINIMAL_MODE "Shows information in minimal mode"
+    set HF_HELP_ALL_INFO "Shows all complete system information"
+    set HF_HELP_HELP "Help:"
+    set HF_HELP_CUSTOM_FONT_TITLE "Custom fonts"
+    set HF_HELP_CUSTOM_FONT "To install a custom font, simply place the Custom.flf file in the ~/.hydrofetch folder"
+    set HF_HELP_REPOSITORY "Repository"
+
+    ## Msg
+    set HF_MSG_DEPS_NOT_FOUND "Dependencies not found. Installing..."
+    set HF_MSG_PKG_NOT_SUPPORTED "Package manager not supported! Install dependencies manually. (Figlet, jq and inetutils for arch)"
+
+    ## Infos
+    set HF_INFO_SI_TITLE "SYSTEM INFORMATION"
+    set HF_INFO_HOSTNAME "Hostname"
+    set HF_INFO_OS "Operating system"
+    set HF_INFO_KERNEL "Kernel Version"
+    set HF_INFO_ARCH "Architecture"
+    set HF_INFO_OS_TYPE "Operating system type"
+
+    set HF_INFO_CPU_GPU_TITLE "CPU and GPU"
+    set HF_INFO_CPU "CPU"
+    set HF_INFO_CPU_CORES "CPU cores"
+    set HF_INFO_GPU "GPU"
+
+    set HF_INFO_MEMORY_TITLE "MEMORY"
+    set HF_INFO_RAM "RAM memory"
+
+    set HF_INFO_USER_TITLE "USER"
+    set HF_INFO_USER "User"
+    set HF_INFO_HOME "Home"
+
+    set HF_INFO_UPTIME_TITLE "UPTIME"
+    set HF_INFO_UPTIME "The system has been on for"
+
+    set HF_INFO_NETWORK_TITLE "NETWORK"
+    set HF_INFO_IP "IP"
+    set HF_INFO_NETWORK "Network Interface"
+end
+
 # Informações do sistema
 set USER (whoami)
 set HOST $hostname
@@ -21,22 +109,27 @@ set KERNEL (uname -r)
 set DE (string replace -r '^$' N/A (set -q XDG_CURRENT_DESKTOP; and echo $XDG_CURRENT_DESKTOP; or echo N/A))
 set RAM (free -h --si | awk 'NR==2 {print $3 " / " $2}')
 
+if not test -d $LOCAL_DIR/translations
+    mkdir -p $LOCAL_DIR
+    git clone https://github.com/Henriquehnnm/HydroFetch-translations.git --depth 1 "$LOCAL_DIR/translations"
+end
+
 # Mostrar ajuda
 if test "$argv[1]" = "-h"
    or test "$argv[1]" = "--help"
 
    set -l SCRIPT_NAME (basename (status current-filename))
 
-    echo -e "$CYAN\nUsage: $SCRIPT_NAME [option]$NC"
+    echo -e "$CYAN\n$HF_HELP_USAGE $SCRIPT_NAME $HF_HELP_OPTION$NC"
     echo ""
-        echo -e "$GREEN Available options:$NC"
-        echo -e "  $YELLOW--help, -h$NC          Show this help message"
-        echo -e "  $YELLOW--version, -v$NC       Shows the HydroFetch version"
-        echo -e "  $YELLOW--min, -m$NC           Shows information in minimal mode"
-        echo -e "  $YELLOW--all, -a$NC           Shows all complete system information"
-        echo -e "\n$GREEN Help:$NC"
-        echo -e "  $YELLOW Custom fonts$NC  To install a custom font, simply place the Custom.flf file in the ~/.hydrofetch folder"
-        echo -e "  $YELLOW Repository$NC       $BLUE https://github.com/Henriquehnnm/HydroFetch$NC"
+        echo -e "$GREEN$HF_HELP_OPTIONS$NC"
+        echo -e "  $YELLOW--help, -h$NC          $HF_HELP_SHOW_HELP"
+        echo -e "  $YELLOW--version, -v$NC       $HF_HELP_SHOW_VERSION"
+        echo -e "  $YELLOW--min, -m$NC           $HF_HELP_MINIMAL_MODE"
+        echo -e "  $YELLOW--all, -a$NC           $HF_HELP_ALL_INFO"
+        echo -e "\n$GREEN$HF_HELP_HELP$NC"
+        echo -e "  $YELLOW$HF_HELP_CUSTOM_FONT_TITLE$NC  $HF_HELP_CUSTOM_FONT"
+        echo -e "  $YELLOW$HF_HELP_REPOSITORY$NC       $BLUE   https://github.com/Henriquehnnm/HydroFetch$NC"
         echo ""
         exit 0
 end
@@ -50,7 +143,7 @@ end
 
 # Verificar e instalar dependencias
 if not command -v figlet &>/dev/null
-    echo -e "$YELLOW Dependencies not found. Installing..."
+    echo -e "$YELLOW $HF_MSG_DEPS_NOT_FOUND."
 
     if command -v apt &>/dev/null
         sudo apt-get update && sudo apt-get install -y figlet jq
@@ -64,7 +157,7 @@ if not command -v figlet &>/dev/null
     else if command -v apk &>/dev/null
         sudo apk add figlet jq
     else
-       echo -e "$RED Package manager not supported! Install dependencies manually. (Figlet, jq and inetutils for arch)"
+       echo -e "$RED $HF_MSG_PKG_NOT_SUPPORTED"
     end
 end
 
@@ -75,44 +168,44 @@ if test "$argv[1]" = "-a"
     figlet "InfoSystem"
     echo -e "$NC"
 
-    echo -e "$CYAN──────────────────── SYSTEM INFORMATION ────────────────────$NC"
+    echo -e "$CYAN──────────────────── $HF_INFO_SI_TITLE ────────────────────$NC"
     echo ""
-    echo "Hostname: $HOST"
-    echo "Operating system: $OS"
-    echo "Kernel Version: $(uname -r)"
-    echo "Architecture: $(uname -m)"
-    echo "Operating system type: $(uname -o)"
+    echo "$HF_INFO_HOSTNAME: $HOST"
+    echo "$HF_INFO_OS: $OS"
+    echo "$HF_INFO_KERNEL: $(uname -r)"
+    echo "$HF_INFO_ARCH: $(uname -m)"
+    echo "$HF_INFO_OS_TYPE: $(uname -o)"
     echo ""
 
-    echo -e "$CYAN──────────────────── CPU and GPU ────────────────────$NC"
+    echo -e "$CYAN──────────────────── $HF_INFO_CPU_GPU_TITLE ────────────────────$NC"
     echo ""
     set cpu_model (grep -m 1 'model name' /proc/cpuinfo | cut -d ':' -f2 | sed 's/^ //')
     set cpu_cores (grep -c ^processor /proc/cpuinfo)
     set gpu_model (lspci | grep -i vga)
-    echo "CPU: $cpu_model"
-    echo "CPU cores: $cpu_cores"
-    echo "GPU: $gpu_model"
+    echo "$HF_INFO_CPU: $cpu_model"
+    echo "$HF_INFO_CPU_CORES: $cpu_cores"
+    echo "$HF_INFO_GPU: $gpu_model"
     echo ""
 
-    echo -e "$CYAN──────────────────── MEMORY ────────────────────$NC"
+    echo -e "$CYAN──────────────────── $HF_INFO_MEMORY_TITLE ────────────────────$NC"
       echo ""
       set mem_total (grep MemTotal /proc/meminfo | awk '{print $2}')
       set mem_total_mb (math "$mem_total / 1024")
-      echo "RAM memory: $mem_total_mb mb"
+      echo "$HF_INFO_RAM: $mem_total_mb mb"
       echo ""
 
-      echo -e "$CYAN─────────────────── USUÁRIO ────────────────────$NC"
+      echo -e "$CYAN─────────────────── $HF_INFO_USER_TITLE ────────────────────$NC"
       echo ""
-      echo -e "User: $USER"
-      echo "Home: $HOME"
-      echo ""
-
-      echo -e "$CYAN──────────────────── UPTIME ────────────────────$NC"
-      echo ""
-      echo "The system has been on for: $(uptime -p)"
+      echo -e "$HF_INFO_USER: $USER"
+      echo "$HF_INFO_HOME: $HOME"
       echo ""
 
-      echo -e "$CYAN──────────────────── REDE ────────────────────$NC"
+      echo -e "$CYAN──────────────────── $HF_INFO_UPTIME_TITLE ────────────────────$NC"
+      echo ""
+      echo "$HF_INFO_UPTIME: $(uptime -p)"
+      echo ""
+
+      echo -e "$CYAN──────────────────── $HF_INFO_NETWORK_TITLE ────────────────────$NC"
       echo ""
 
       # Pega a interface de rede padrão
@@ -121,33 +214,12 @@ if test "$argv[1]" = "-a"
       # Pega o endereço IP associado à interface de rede
       set ipaddr (ip -o -4 addr show $interface | awk '{print $4}' | cut -d/ -f1; or echo N/A)
 
-      echo "IP: $(string replace -r '^$' N/A $ipaddr)"
-      echo "Network Interface: $(string replace -r '^$' N/A $interface)"
+      echo "$HF_INFO_IP: $(string replace -r '^$' N/A $ipaddr)"
+      echo "$HF_INFO_NETWORK: $(string replace -r '^$' N/A $interface)"
       echo ""
 
       exit 0
 end
-
-# Criar diretório ~/.hydrofetch
-# Dirs
-set HYDROFETCH_DIR "$HOME/.hydrofetch"
-set PLUGINS_DIR "$HYDROFETCH_DIR/Plugins"
-
-# Path's
-set LOGOS_PATH "$PLUGINS_DIR/Logos.json"
-set FONT_PATH "$HYDROFETCH_DIR/Custom.flf"
-
-# Mkdir
-mkdir -p "$HYDROFETCH_DIR"
-mkdir -p "$PLUGINS_DIR"
-
-set ICON_USER " "
-set ICON_HOST "󰖟 "
-set ICON_OS "󰌽 "
-set ICON_KERNEL " "
-set ICON_DE "󰍹 "
-set ICON_RAM " "
-set ICON_COLORS " "
 
 if test -f $LOGOS_PATH
 
