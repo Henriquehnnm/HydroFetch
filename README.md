@@ -14,7 +14,7 @@
   </a>
 </p>
 
-> **❗️ Important Notice: Focus on Fish Shell ❗️**
+> **⚠️ Important Notice: Focus on Fish Shell**
 > 
 > Starting with version **2.5.0**, the Bash version of HydroFetch (`hydrofetch.sh`) will be archived and will no longer receive updates. The project is now focusing exclusively on the **Fish shell version** (`hydrofetch.fish`) to provide a more polished, feature-rich, and stable experience for users.
 
