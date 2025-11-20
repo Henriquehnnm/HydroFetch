@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/Henriquehnnm/HydroFetch/releases">
-    <img src="https://img.shields.io/github/v/release/Henriquehnnm/HydroFetch?style=for-the-badge" alt="GitHub release (latest by date)">
+    <img src="https://img.shields.io/github/v/release/Henriquehnnm/HydroFetch?style=for-the-badge&color=96dd4b&labelColor=151b23&logoColor=ffffff" />
   </a>
 </p>
 
