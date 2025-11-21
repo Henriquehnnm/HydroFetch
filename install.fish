@@ -58,8 +58,10 @@ end
 
 echo -e "$YELLOW Creating links to facilitate execution... $NC"
 if test -f $BIN_PATH
+    mkdir -p $BIN
     ln -sf $HF_PATH $BIN_PATH
 else
+    mkdir -p $BIN
     ln -s $HF_PATH $BIN_PATH
 end
 if test $status != 0
