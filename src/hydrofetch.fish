@@ -201,14 +201,49 @@ if test "$argv[1]" = "-a"
       exit 0
 end
 
+
 if test -f $LOGOS_PATH
 
     set LOGO (jq -r --arg os_name "$OS" '.[$os_name] // [] | .[]' "$LOGOS_PATH")
+    set -p LOGO ""
 
     if test -n "$LOGO"
-        for line in $LOGO
-            echo -e "$CYAN$line$NC"
+        set BOX_LINES
+        set -a BOX_LINES (printf "$MAGENTA╭──────────────────────────────────────────╮$NC")
+        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_USER $MAGENTA│$WHITE User:   %-22s $MAGENTA     │$NC" "$USER")
+        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_HOST $MAGENTA│$WHITE Host:   %-22s $MAGENTA     │$NC" "$HOST")
+        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_OS $MAGENTA│$WHITE OS:     %-22s $MAGENTA     │$NC" "$OS")
+        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_KERNEL $MAGENTA│$WHITE Kernel: %-22s $MAGENTA     │$NC" "$KERNEL")
+        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_DE $MAGENTA│$WHITE DE:     %-22s $MAGENTA     │$NC" "$DE")
+        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_RAM $MAGENTA│$WHITE RAM:    %-22s $MAGENTA     │$NC" "$RAM")
+        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_COLORS$MAGENTA │$WHITE Colors: $RED $NC  $GREEN $NC  $YELLOW $NC  $BLUE $NC  $MAGENTA $NC  $CYAN $NC  $WHITE $NC  $MAGENTA│$NC")
+        set -a BOX_LINES (printf "$MAGENTA╰──────────────────────────────────────────╯$NC")
+
+        set LOGO_COUNT (count $LOGO)
+        set BOX_COUNT (count $BOX_LINES)
+
+        set MAX_LINES (math "max($LOGO_COUNT, $BOX_COUNT)")
+
+        # Loop sincronizado
+        for i in (seq 1 $MAX_LINES)
+            if test $i -le $LOGO_COUNT
+                set LOGO_LINE $LOGO[$i]
+                if test -z "$LOGO_LINE"
+                    set LOGO_LINE (printf "%-21s" "")
+                end
+            else
+                set LOGO_LINE (printf "%-21s" "")
+            end
+
+            if test $i -le $BOX_COUNT
+                set BOX_LINE $BOX_LINES[$i]
+            else
+                set BOX_LINE ""
+            end
+
+            echo -e "$CYAN$LOGO_LINE$NC$BOX_LINE"
         end
+        exit 0
     else
         if test -f $FONT_PATH
             echo -e "$CYAN"

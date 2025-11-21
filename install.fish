@@ -13,7 +13,10 @@ set NC '\033[0m'
 echo -e "$BLUE == HYDROFETCH INSTALL == $NC"
 
 # Verificar e instalar dependencias
-if not command -v figlet git jq wget &>/dev/null
+if not command -v figlet &>/dev/null
+    and command -v git &>/dev/null
+    and command -v jq &>/dev/null
+    and command -v wget &>/dev/null
     echo -e "$YELLOW Dependencies not found, installing...$NC"
 
     if command -v apt &>/dev/null
