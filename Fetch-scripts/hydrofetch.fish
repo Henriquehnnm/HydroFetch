@@ -3,7 +3,7 @@
 # Versão
 set VERSION "2.4.9 Fish Edition"
 
-# Criar diretório ~/.hydrofetch
+# Criar diretórios e path's
 # Dirs
 set HYDROFETCH_DIR "$HOME/.config/hydrofetch"
 set PLUGINS_DIR "$HYDROFETCH_DIR/Plugins"
@@ -66,7 +66,7 @@ else
     set HF_HELP_ALL_INFO "Shows all complete system information"
     set HF_HELP_HELP "Help:"
     set HF_HELP_CUSTOM_FONT_TITLE "Custom fonts"
-    set HF_HELP_CUSTOM_FONT "To install a custom font, simply place the Custom.flf file in the ~/.hydrofetch folder"
+    set HF_HELP_CUSTOM_FONT "To install a custom font, simply place the Custom.flf file in the ~/.config/hydorfetch folder"
     set HF_HELP_REPOSITORY "Repository"
 
     ## Msg
