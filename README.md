@@ -5,7 +5,7 @@
 <h1 align="center">HydroFetch</h1>
 
 <p align="center">
-  A fast, beautiful, and lightweight system information tool written in Fish shell.
+  A fast, beautiful, and lightweight system information tool written exclusively for the Fish shell.
 </p>
 
 <p align="center">
@@ -13,9 +13,9 @@
     <img src="https://img.shields.io/github/v/release/Henriquehnnm/HydroFetch?style=for-the-badge&color=96dd4b&labelColor=151b23&logoColor=ffffff" />
 </p>
 
-> **⚠️ Important Notice: Focus on Fish Shell**
+> **⚠️ Important Notice: Exclusive Focus on Fish Shell**
 > 
-> Starting with version **2.5.0**, the Bash version of HydroFetch (`hydrofetch.sh`) will be archived and will no longer receive updates. The project is now focusing exclusively on the **Fish shell version** (`hydrofetch.fish`) to provide a more polished, feature-rich, and stable experience for users.
+> The Bash version of HydroFetch has been discontinued. The project is now focusing exclusively on the **Fish shell version** (`hydrofetch.fish`) to provide a more polished, feature-rich, and stable experience.
 
 ## Preview
 
@@ -27,8 +27,8 @@
 
 - **Purely Fish Script:** Written entirely in Fish for maximum speed and efficiency within the Fish shell.
 - **Essential Info:** Displays key system information like OS, Kernel, Desktop Environment, RAM, and more.
-- **Smart Dependencies:** Automatically checks for and installs required dependencies (`figlet`, `jq`) using your system's package manager (supports `apt`, `dnf`, `pacman`, `zypper`, and `apk`).
-- **Multi-language Support:** HydroFetch automatically detects your system language and downloads the corresponding translation to display information in your native language.
+- **Smart Dependencies:** The installation script automatically checks for and installs required dependencies (`figlet`, `jq`, `wget`) using your system's package manager (supports `apt`, `dnf`, `pacman`, `zypper`, and `apk`).
+- **Multi-language Support:** HydroFetch automatically detects your system language and, if a translation is available, displays information in your native language.
 - **Highly Customizable:** Change icons, use custom `figlet` fonts, and add custom ASCII art for your OS.
 - **Multiple Modes:** Includes a default view, a compact minimal mode (`--min`), and a detailed information mode (`--all`).
 
@@ -36,10 +36,23 @@
 
 - **Fish Shell**
 - **Nerd Font:** Required to display icons correctly. You can download one from [nerdfonts.com](https://www.nerdfonts.com/).
-- `figlet` (The script will attempt to install it for you)
-- `jq` (The script will attempt to install it for you)
+- `figlet` (The installation script will attempt to install it for you)
+- `jq` (The installation script will attempt to install it for you)
+- `wget` (The installation script will attempt to install it for you)
 
 ## Installation
+
+### Easy Install (Recommended)
+
+Run the following command in your terminal to automatically download and set up HydroFetch:
+
+```fish
+curl -sSL https://raw.githubusercontent.com/Henriquehnnm/HydroFetch/main/install.fish | fish
+```
+
+The script will install the tool to `~/.hydrofetch.fish` and create a convenient `hf` command in `~/.local/bin/`. After installation, restart your terminal and run `hf`.
+
+### Manual Installation
 
 1.  **Clone the repository:**
     ```fish
@@ -47,21 +60,14 @@
     cd HydroFetch
     ```
 
-2.  **Make the script executable:**
+2.  **Run the installation script:**
     ```fish
-    chmod +x Fetch-scripts/hydrofetch.fish
+    fish ./install.fish
     ```
-
-3.  **Run it directly or create an alias for convenience.**
-    To create an alias, add the following to your `~/.config/fish/config.fish` file, replacing the path with the correct location of the script:
-    ```fish
-    alias hf "/path/to/HydroFetch/Fetch-scripts/hydrofetch.fish"
-    ```
-    Then, reload your shell or run `source ~/.config/fish/config.fish`.
 
 ## Usage
 
-Once installed, you can run the script with the following options:
+Once installed, you can run the script with the `hf` alias:
 
 ```fish
 # Default view

@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # Versão
-set VERSION "2.4.9 Fish Edition"
+set VERSION "2.5.0 Fish Edition"
 
 # Criar diretórios e path's
 # Dirs
@@ -70,8 +70,7 @@ else
     set HF_HELP_REPOSITORY "Repository"
 
     ## Msg
-    set HF_MSG_DEPS_NOT_FOUND "Dependencies not found. Installing..."
-    set HF_MSG_PKG_NOT_SUPPORTED "Package manager not supported! Install dependencies manually. (Figlet, jq and inetutils for arch)"
+    set HF_MSG_DEPS_NOT_FOUND "Dependencies not found, install figlet and jq"
 
     ## Infos
     set HF_INFO_SI_TITLE "SYSTEM INFORMATION"
@@ -109,11 +108,6 @@ set KERNEL (uname -r)
 set DE (string replace -r '^$' N/A (set -q XDG_CURRENT_DESKTOP; and echo $XDG_CURRENT_DESKTOP; or echo N/A))
 set RAM (free -h --si | awk 'NR==2 {print $3 " / " $2}')
 
-if not test -d $LOCAL_DIR/translations
-    mkdir -p $LOCAL_DIR
-    git clone https://github.com/Henriquehnnm/HydroFetch-translations.git --depth 1 "$LOCAL_DIR/translations"
-end
-
 # Mostrar ajuda
 if test "$argv[1]" = "-h"
    or test "$argv[1]" = "--help"
@@ -144,21 +138,7 @@ end
 # Verificar e instalar dependencias
 if not command -v figlet &>/dev/null
     echo -e "$YELLOW $HF_MSG_DEPS_NOT_FOUND."
-
-    if command -v apt &>/dev/null
-        sudo apt-get update && sudo apt-get install -y figlet jq
-    else if command -v dnf &>/dev/null
-        sudo dnf install -y figlet jq
-    else if command -v pacman &>/dev/null
-        sudo pacman -Sy --noconfirm figlet inetutils jq
-    else if command -v zypper &>/dev/null
-        sudo zypper refresh
-        sudo zypper --non-interactive install figlet jq
-    else if command -v apk &>/dev/null
-        sudo apk add figlet jq
-    else
-       echo -e "$RED $HF_MSG_PKG_NOT_SUPPORTED"
-    end
+    exit 1
 end
 
 # Mostrar todas as infos com --all
