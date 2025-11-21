@@ -13,20 +13,20 @@ set NC '\033[0m'
 echo -e "$BLUE == HYDROFETCH INSTALL == $NC"
 
 # Verificar e instalar dependencias
-if not command -v figlet &>/dev/null
+if not command -v figlet git jq wget &>/dev/null
     echo -e "$YELLOW Dependencies not found, installing...$NC"
 
     if command -v apt &>/dev/null
-        sudo apt-get update && sudo apt-get install -y figlet jq wget
+        sudo apt-get update && sudo apt-get install -y figlet jq wget git
     else if command -v dnf &>/dev/null
-        sudo dnf install -y figlet jq wget
+        sudo dnf install -y figlet jq wget git
     else if command -v pacman &>/dev/null
-        sudo pacman -Sy --noconfirm figlet inetutils jq wget
+        sudo pacman -Sy --noconfirm figlet inetutils jq wget git
     else if command -v zypper &>/dev/null
         sudo zypper refresh
-        sudo zypper --non-interactive install figlet jq wget
+        sudo zypper --non-interactive install figlet jq wget git
     else if command -v apk &>/dev/null
-        sudo apk add figlet jq wget
+        sudo apk add figlet jq wget git
     else
        echo -e "$RED Package manager not found, install dependencies manually.$NC"
     end
