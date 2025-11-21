@@ -26,9 +26,10 @@
 ## Features
 
 - **Purely Fish Script:** Written entirely in Fish for maximum speed and efficiency within the Fish shell.
-- **Essential Info:** Displays key system information: OS, Kernel, Desktop Environment, RAM, and more.
-- **Smart Dependencies:** Automatically checks for and installs required dependencies (`figlet`, `jq`) using the system's package manager.
-- **Customizable:** Supports custom `figlet` fonts.
+- **Essential Info:** Displays key system information like OS, Kernel, Desktop Environment, RAM, and more.
+- **Smart Dependencies:** Automatically checks for and installs required dependencies (`figlet`, `jq`) using your system's package manager (supports `apt`, `dnf`, `pacman`, `zypper`, and `apk`).
+- **Multi-language Support:** HydroFetch automatically detects your system language and downloads the corresponding translation to display information in your native language.
+- **Highly Customizable:** Change icons, use custom `figlet` fonts, and add custom ASCII art for your OS.
 - **Multiple Modes:** Includes a default view, a compact minimal mode (`--min`), and a detailed information mode (`--all`).
 
 ## Requirements
@@ -81,11 +82,29 @@ hf --help
 
 ## Customization
 
-You can customize HydroFetch to use your own logos or fonts. The script checks for custom files in the `~/.hydrofetch` directory.
+You can customize HydroFetch by creating files in the `~/.config/hydrofetch/` directory.
 
 ### Custom Font
 
-To use a custom `figlet` font for the OS ASCII art, place a font file named `Custom.flf` inside the `~/.hydrofetch/` directory.
+To use a custom `figlet` font for the OS ASCII art, place a font file named `Custom.flf` inside the `~/.config/hydrofetch/` directory.
+
+### Custom Icons
+
+You can override the default icons shown in the main info box by creating a `Config.json` file at `~/.config/hydrofetch/Config.json`.
+
+Example `Config.json`:
+```json
+{
+  "ICON_USER": " ",
+  "ICON_HOST": "󰒋 ",
+  "ICON_OS": " ",
+  "ICON_KERNEL": "󰌽 ",
+  "ICON_DE": " ",
+  "ICON_RAM": " ",
+  "ICON_COLORS": "󰌁 "
+}
+```
+You only need to include the icons you want to change.
 
 ## Plugins
 
