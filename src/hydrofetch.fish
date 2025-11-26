@@ -204,7 +204,7 @@ end
 
 if test -f $LOGOS_PATH
 
-    set LOGO (jq -r --arg os_name "$OS" '.[$os_name] // [] | .[]' "$LOGOS_PATH")
+    set LOGO (jq -r --arg os_name "$OS" '.[$os_name] // .Tux // [] | .[]' "$LOGOS_PATH")
     set -p LOGO ""
 
     if test -n "$LOGO"
