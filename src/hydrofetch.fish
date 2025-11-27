@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # Versão
-set VERSION "2.5.0 Fish Edition"
+set VERSION "2.5.1 Fish Edition"
 
 # Criar diretórios e path's
 # Dirs
@@ -201,6 +201,13 @@ if test "$argv[1]" = "-a"
       exit 0
 end
 
+# Min mode
+if test "$argv[1]" = '-m'
+    or test "$argv[1]" = '--min'
+        echo -e "$RED $OS $NC•$YELLOW $USER $NC•$GREEN $DE $NC "
+    exit 0
+end
+
 
 if test -f $LOGOS_PATH
 
@@ -266,19 +273,6 @@ else
         figlet "$OS"
         echo -e "$NC"
     end
-end
-
-# Min mode
-if test "$argv[1]" = '-m'
-    or test "$argv[1]" = '--min'
-
-    if test -f $LOGOS_PATH
-        echo -e "\n$RED $OS $NC•$YELLOW $USER $NC•$GREEN $DE $NC "
-    else
-        echo -e "$RED $OS $NC•$YELLOW $USER $NC•$GREEN $DE $NC "
-    end
-
-    exit 0
 end
 
 # Exibir informações dentro de uma única caixa
