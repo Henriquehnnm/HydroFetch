@@ -14,9 +14,9 @@ echo -e "$BLUE == HYDROFETCH INSTALL == $NC"
 
 # Verificar e instalar dependencias
 if not command -v figlet &>/dev/null
-    or command -v git &>/dev/null
-    or command -v jq &>/dev/null
-    or command -v wget &>/dev/null
+    or not command -v git &>/dev/null
+    or not command -v jq &>/dev/null
+    or not command -v wget &>/dev/null
     echo -e "$YELLOW Dependencies not found, installing...$NC"
 
     if command -v apt &>/dev/null
