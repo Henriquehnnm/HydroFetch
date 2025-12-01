@@ -70,7 +70,7 @@ else
     set HF_HELP_REPOSITORY "Repository"
 
     ## Msg
-    set HF_MSG_DEPS_NOT_FOUND "Dependencies not found, install figlet and jq"
+    set HF_MSG_DEPS_NOT_FOUND "Dependencies not found, install figlet, jq and git"
 
     ## Infos
     set HF_INFO_SI_TITLE "SYSTEM INFORMATION"
