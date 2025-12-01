@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # Versão
-set VERSION "2.5.1 Fish Edition"
+set VERSION "2.5.2 Fish Edition"
 
 # Criar diretórios e path's
 # Dirs
