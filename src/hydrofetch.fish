@@ -137,6 +137,9 @@ end
 
 # Verificar e instalar dependencias
 if not command -v figlet &>/dev/null
+    or command -v git &>/dev/null
+    or command -v jq &>/dev/null
+    or command -v wget &>/dev/null
     echo -e "$YELLOW $HF_MSG_DEPS_NOT_FOUND."
     exit 1
 end
