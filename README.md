@@ -20,7 +20,7 @@
 ## Preview
 
 <p align="center">
-  <img alt="HydroFetch Preview" src="https://github.com/user-attachments/assets/930ed3d4-d452-4b13-9eaa-907162179bb0" />
+  <img width="1042" height="503" alt="preview" src="https://github.com/user-attachments/assets/df7c793e-8a14-4735-b0a7-d507f2f82411" />
 </p>
 
 ## Features
