@@ -67,36 +67,36 @@ else
     set HF_HELP_HELP "Help:"
     set HF_HELP_CUSTOM_FONT_TITLE "Custom fonts"
     set HF_HELP_CUSTOM_FONT "To install a custom font, simply place the Custom.flf file in the ~/.config/hydorfetch folder"
-    set HF_HELP_REPOSITORY "Repository"
+    set HF_HELP_REPOSITORY Repository
 
     ## Msg
     set HF_MSG_DEPS_NOT_FOUND "Dependencies not found, install figlet, jq and git"
 
     ## Infos
     set HF_INFO_SI_TITLE "SYSTEM INFORMATION"
-    set HF_INFO_HOSTNAME "Hostname"
+    set HF_INFO_HOSTNAME Hostname
     set HF_INFO_OS "Operating system"
     set HF_INFO_KERNEL "Kernel Version"
-    set HF_INFO_ARCH "Architecture"
+    set HF_INFO_ARCH Architecture
     set HF_INFO_OS_TYPE "Operating system type"
 
     set HF_INFO_CPU_GPU_TITLE "CPU and GPU"
-    set HF_INFO_CPU "CPU"
+    set HF_INFO_CPU CPU
     set HF_INFO_CPU_CORES "CPU cores"
-    set HF_INFO_GPU "GPU"
+    set HF_INFO_GPU GPU
 
-    set HF_INFO_MEMORY_TITLE "MEMORY"
+    set HF_INFO_MEMORY_TITLE MEMORY
     set HF_INFO_RAM "RAM memory"
 
-    set HF_INFO_USER_TITLE "USER"
-    set HF_INFO_USER "User"
-    set HF_INFO_HOME "Home"
+    set HF_INFO_USER_TITLE USER
+    set HF_INFO_USER User
+    set HF_INFO_HOME Home
 
-    set HF_INFO_UPTIME_TITLE "UPTIME"
+    set HF_INFO_UPTIME_TITLE UPTIME
     set HF_INFO_UPTIME "The system has been on for"
 
-    set HF_INFO_NETWORK_TITLE "NETWORK"
-    set HF_INFO_IP "IP"
+    set HF_INFO_NETWORK_TITLE NETWORK
+    set HF_INFO_IP IP
     set HF_INFO_NETWORK "Network Interface"
 end
 
@@ -109,28 +109,28 @@ set DE (string replace -r '^$' N/A (set -q XDG_CURRENT_DESKTOP; and echo $XDG_CU
 set RAM (free -h --si | awk 'NR==2 {print $3 " / " $2}')
 
 # Mostrar ajuda
-if test "$argv[1]" = "-h"
-   or test "$argv[1]" = "--help"
+if test "$argv[1]" = -h
+    or test "$argv[1]" = --help
 
-   set -l SCRIPT_NAME (basename (status current-filename))
+    set -l SCRIPT_NAME (basename (status current-filename))
 
     echo -e "$CYAN\n$HF_HELP_USAGE $SCRIPT_NAME $HF_HELP_OPTION$NC"
     echo ""
-        echo -e "$GREEN$HF_HELP_OPTIONS$NC"
-        echo -e "  $YELLOW--help, -h$NC          $HF_HELP_SHOW_HELP"
-        echo -e "  $YELLOW--version, -v$NC       $HF_HELP_SHOW_VERSION"
-        echo -e "  $YELLOW--min, -m$NC           $HF_HELP_MINIMAL_MODE"
-        echo -e "  $YELLOW--all, -a$NC           $HF_HELP_ALL_INFO"
-        echo -e "\n$GREEN$HF_HELP_HELP$NC"
-        echo -e "  $YELLOW$HF_HELP_CUSTOM_FONT_TITLE$NC  $HF_HELP_CUSTOM_FONT"
-        echo -e "  $YELLOW$HF_HELP_REPOSITORY$NC       $BLUE   https://github.com/Henriquehnnm/HydroFetch$NC"
-        echo ""
-        exit 0
+    echo -e "$GREEN$HF_HELP_OPTIONS$NC"
+    echo -e "  $YELLOW--help, -h$NC          $HF_HELP_SHOW_HELP"
+    echo -e "  $YELLOW--version, -v$NC       $HF_HELP_SHOW_VERSION"
+    echo -e "  $YELLOW--min, -m$NC           $HF_HELP_MINIMAL_MODE"
+    echo -e "  $YELLOW--all, -a$NC           $HF_HELP_ALL_INFO"
+    echo -e "\n$GREEN$HF_HELP_HELP$NC"
+    echo -e "  $YELLOW$HF_HELP_CUSTOM_FONT_TITLE$NC  $HF_HELP_CUSTOM_FONT"
+    echo -e "  $YELLOW$HF_HELP_REPOSITORY$NC       $BLUE   https://github.com/Henriquehnnm/HydroFetch$NC"
+    echo ""
+    exit 0
 end
 
 # Mostrar versão
-if test "$argv[1]" = "-v"
-    or test "$argv[1]" = "--version"
+if test "$argv[1]" = -v
+    or test "$argv[1]" = --version
     echo -e "  \nHydroFetch $YELLOW$VERSION$NC created by$BLUE Henriquehnnm$NC"
     exit 0
 end
@@ -145,10 +145,10 @@ if not command -v figlet &>/dev/null
 end
 
 # Mostrar todas as infos com --all
-if test "$argv[1]" = "-a"
-    or test "$argv[1]" = "--all"
+if test "$argv[1]" = -a
+    or test "$argv[1]" = --all
     echo -e "$MAGENTA"
-    figlet "InfoSystem"
+    figlet InfoSystem
     echo -e "$NC"
 
     echo -e "$CYAN──────────────────── $HF_INFO_SI_TITLE ────────────────────$NC"
@@ -171,43 +171,43 @@ if test "$argv[1]" = "-a"
     echo ""
 
     echo -e "$CYAN──────────────────── $HF_INFO_MEMORY_TITLE ────────────────────$NC"
-      echo ""
-      set mem_total (grep MemTotal /proc/meminfo | awk '{print $2}')
-      set mem_total_mb (math "$mem_total / 1024")
-      echo "$HF_INFO_RAM: $mem_total_mb mb"
-      echo ""
+    echo ""
+    set mem_total (grep MemTotal /proc/meminfo | awk '{print $2}')
+    set mem_total_mb (math "$mem_total / 1024")
+    echo "$HF_INFO_RAM: $mem_total_mb mb"
+    echo ""
 
-      echo -e "$CYAN─────────────────── $HF_INFO_USER_TITLE ────────────────────$NC"
-      echo ""
-      echo -e "$HF_INFO_USER: $USER"
-      echo "$HF_INFO_HOME: $HOME"
-      echo ""
+    echo -e "$CYAN─────────────────── $HF_INFO_USER_TITLE ────────────────────$NC"
+    echo ""
+    echo -e "$HF_INFO_USER: $USER"
+    echo "$HF_INFO_HOME: $HOME"
+    echo ""
 
-      echo -e "$CYAN──────────────────── $HF_INFO_UPTIME_TITLE ────────────────────$NC"
-      echo ""
-      echo "$HF_INFO_UPTIME: $(uptime -p)"
-      echo ""
+    echo -e "$CYAN──────────────────── $HF_INFO_UPTIME_TITLE ────────────────────$NC"
+    echo ""
+    echo "$HF_INFO_UPTIME: $(uptime -p)"
+    echo ""
 
-      echo -e "$CYAN──────────────────── $HF_INFO_NETWORK_TITLE ────────────────────$NC"
-      echo ""
+    echo -e "$CYAN──────────────────── $HF_INFO_NETWORK_TITLE ────────────────────$NC"
+    echo ""
 
-      # Pega a interface de rede padrão
-      set interface (ip route | grep default | awk '{print $5}'; or echo N/A)
+    # Pega a interface de rede padrão
+    set interface (ip route | grep default | awk '{print $5}'; or echo N/A)
 
-      # Pega o endereço IP associado à interface de rede
-      set ipaddr (ip -o -4 addr show $interface | awk '{print $4}' | cut -d/ -f1; or echo N/A)
+    # Pega o endereço IP associado à interface de rede
+    set ipaddr (ip -o -4 addr show $interface | awk '{print $4}' | cut -d/ -f1; or echo N/A)
 
-      echo "$HF_INFO_IP: $(string replace -r '^$' N/A $ipaddr)"
-      echo "$HF_INFO_NETWORK: $(string replace -r '^$' N/A $interface)"
-      echo ""
+    echo "$HF_INFO_IP: $(string replace -r '^$' N/A $ipaddr)"
+    echo "$HF_INFO_NETWORK: $(string replace -r '^$' N/A $interface)"
+    echo ""
 
-      exit 0
+    exit 0
 end
 
 # Min mode
-if test "$argv[1]" = '-m'
-    or test "$argv[1]" = '--min'
-        echo -e "$RED $OS $NC•$YELLOW $USER $NC•$GREEN $DE $NC "
+if test "$argv[1]" = -m
+    or test "$argv[1]" = --min
+    echo -e "$RED $OS $NC•$YELLOW $USER $NC•$GREEN $DE $NC "
     exit 0
 end
 
