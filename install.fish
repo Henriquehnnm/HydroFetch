@@ -36,7 +36,7 @@ if not command -v figlet &>/dev/null
     else if command -v apk &>/dev/null
         sudo apk add figlet jq wget git
     else
-       echo -e "$RED Package manager not found, install dependencies manually.$NC"
+        echo -e "$RED Package manager not found, install dependencies manually.$NC"
     end
 end
 
@@ -61,7 +61,7 @@ if test $status != 0
     echo -e "$RED Something went wrong :( $NC"
     exit 1
 else
-   echo -e "$GREEN Execution granted $NC"
+    echo -e "$GREEN Execution granted $NC"
 end
 
 echo -e "$YELLOW Creating links to facilitate execution... $NC"
@@ -97,5 +97,5 @@ if test $status != 0
     echo -e "$RED Something went wrong :( $NC"
     exit 1
 else
-    echo -e "$GREEN Installation finished! restart terminal and rose $BLUE hf $GREEN to run hydrofetch :) $NC"
+    echo -e "$GREEN Installation finished! restart terminal and run $BLUE hf $GREEN to run hydrofetch :) $NC"
 end
