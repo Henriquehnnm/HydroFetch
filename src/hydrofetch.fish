@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # Versão
-set VERSION "2.5.2 Fish Edition"
+set VERSION "2.5.3 Fish Edition"
 
 # Criar diretórios e path's
 # Dirs
@@ -102,9 +102,12 @@ end
 
 # Informações do sistema
 set USER (whoami)
+set USER_TRUNC (string sub --length 22 $USER)
 set HOST $hostname
+set HOST_TRUNC (string sub --length 22 $HOST)
 set OS (grep -E '^NAME=' /etc/os-release | cut -d'=' -f2 | tr -d '"')
 set KERNEL (uname -r)
+set KERNEL_TRUNC (string sub --length 22 $KERNEL)
 set DE (string replace -r '^$' N/A (set -q XDG_CURRENT_DESKTOP; and echo $XDG_CURRENT_DESKTOP; or echo N/A))
 set RAM (free -h --si | awk 'NR==2 {print $3 " / " $2}')
 
@@ -211,7 +214,6 @@ if test "$argv[1]" = -m
     exit 0
 end
 
-
 if test -f $LOGOS_PATH
 
     set LOGO (jq -r --arg os_name "$OS" '.[$os_name] // .Tux // [] | .[]' "$LOGOS_PATH")
@@ -220,10 +222,10 @@ if test -f $LOGOS_PATH
     if test -n "$LOGO"
         set BOX_LINES
         set -a BOX_LINES (printf "$MAGENTA╭──────────────────────────────────────────╮$NC")
-        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_USER $MAGENTA│$WHITE User:   %-22s $MAGENTA     │$NC" "$USER")
-        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_HOST $MAGENTA│$WHITE Host:   %-22s $MAGENTA     │$NC" "$HOST")
+        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_USER $MAGENTA│$WHITE User:   %-22s $MAGENTA     │$NC" "$USER_TRUNC")
+        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_HOST $MAGENTA│$WHITE Host:   %-22s $MAGENTA     │$NC" "$HOST_TRUNC")
         set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_OS $MAGENTA│$WHITE OS:     %-22s $MAGENTA     │$NC" "$OS")
-        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_KERNEL $MAGENTA│$WHITE Kernel: %-22s $MAGENTA     │$NC" "$KERNEL")
+        set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_KERNEL $MAGENTA│$WHITE Kernel: %-22s $MAGENTA     │$NC" "$KERNEL_TRUNC")
         set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_DE $MAGENTA│$WHITE DE:     %-22s $MAGENTA     │$NC" "$DE")
         set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_RAM $MAGENTA│$WHITE RAM:    %-22s $MAGENTA     │$NC" "$RAM")
         set -a BOX_LINES (printf " $MAGENTA│$WHITE $ICON_COLORS$MAGENTA │$WHITE Colors: $RED $NC  $GREEN $NC  $YELLOW $NC  $BLUE $NC  $MAGENTA $NC  $CYAN $NC  $WHITE $NC  $MAGENTA│$NC")
@@ -280,10 +282,10 @@ end
 
 # Exibir informações dentro de uma única caixa
 echo -e "$MAGENTA╭──────────────────────────────────────────╮$NC"
-printf "$MAGENTA│$WHITE $ICON_USER $MAGENTA│$WHITE User:   %-22s $MAGENTA     │$NC\n" "$USER"
-printf "$MAGENTA│$WHITE $ICON_HOST $MAGENTA│$WHITE Host:   %-22s $MAGENTA     │$NC\n" "$HOST"
+printf "$MAGENTA│$WHITE $ICON_USER $MAGENTA│$WHITE User:   %-22s $MAGENTA     │$NC\n" "$USER_TRUNC"
+printf "$MAGENTA│$WHITE $ICON_HOST $MAGENTA│$WHITE Host:   %-22s $MAGENTA     │$NC\n" "$HOST_TRUNC"
 printf "$MAGENTA│$WHITE $ICON_OS $MAGENTA│$WHITE OS:     %-22s $MAGENTA     │$NC\n" "$OS"
-printf "$MAGENTA│$WHITE $ICON_KERNEL $MAGENTA│$WHITE Kernel: %-22s $MAGENTA     │$NC\n" "$KERNEL"
+printf "$MAGENTA│$WHITE $ICON_KERNEL $MAGENTA│$WHITE Kernel: %-22s $MAGENTA     │$NC\n" "$KERNEL_TRUNC"
 printf "$MAGENTA│$WHITE $ICON_DE $MAGENTA│$WHITE DE:     %-22s $MAGENTA     │$NC\n" "$DE"
 printf "$MAGENTA│$WHITE $ICON_RAM $MAGENTA│$WHITE RAM:    %-22s $MAGENTA     │$NC\n" "$RAM"
 printf "$MAGENTA│$WHITE $ICON_COLORS$MAGENTA │$WHITE Colors: $RED $NC  $GREEN $NC  $YELLOW $NC  $BLUE $NC  $MAGENTA $NC  $CYAN $NC  $WHITE $NC  $MAGENTA│$NC\n"
