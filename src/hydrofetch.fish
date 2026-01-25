@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # Versão
-set VERSION "2.5.3 Fish Edition"
+set VERSION "2.5.4 Fish Edition"
 
 # Criar diretórios e path's
 # Dirs
@@ -44,7 +44,7 @@ set YELLOW '\033[1;33m'
 set BLUE '\033[1;34m'
 set MAGENTA '\033[1;35m'
 set CYAN '\033[1;36m'
-set WHITE '\033[1;37m'
+set WHITE '\033[1;39m'
 set NC '\033[0m'
 
 # Língua
@@ -210,6 +210,7 @@ end
 # Min mode
 if test "$argv[1]" = -m
     or test "$argv[1]" = --min
+    echo
     echo -e "$RED $OS $NC•$YELLOW $USER $NC•$GREEN $DE $NC "
     exit 0
 end
